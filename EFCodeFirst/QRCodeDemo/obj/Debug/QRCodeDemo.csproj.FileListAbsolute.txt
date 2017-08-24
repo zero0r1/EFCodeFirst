@@ -1,0 +1,10 @@
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\bin\Debug\QRCodeDemo.exe
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\bin\Debug\QRCodeDemo.pdb
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\obj\Debug\QRCodeDemo.csprojResolveAssemblyReference.cache
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\obj\Debug\QRCodeDemo.Properties.Resources.resources
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\obj\Debug\QRCodeDemo.csproj.GenerateResource.Cache
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\obj\Debug\QRCodeDemo.exe
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\obj\Debug\QRCodeDemo.pdb
+d:\support\xiang\documents\visual studio 2012\Projects\QRCodeDemo\QRCodeDemo\obj\Debug\QRCodeDemo.FrmQr.resources
+D:\support\xiang\Documents\Visual Studio 2012\Projects\EFCodeFirst\QRCodeDemo\obj\Debug\QRCodeDemo.exe
+D:\support\xiang\Documents\Visual Studio 2012\Projects\EFCodeFirst\QRCodeDemo\obj\Debug\QRCodeDemo.pdb

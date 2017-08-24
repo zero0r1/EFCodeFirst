@@ -1,0 +1,9 @@
+d:\support\xiang\documents\visual studio 2012\Projects\ConsoleApplication1\FluentApiModel\bin\Debug\FluentApiModel.dll
+d:\support\xiang\documents\visual studio 2012\Projects\ConsoleApplication1\FluentApiModel\bin\Debug\FluentApiModel.pdb
+d:\support\xiang\documents\visual studio 2012\Projects\ConsoleApplication1\FluentApiModel\obj\Debug\FluentApiModel.dll
+d:\support\xiang\documents\visual studio 2012\Projects\ConsoleApplication1\FluentApiModel\obj\Debug\FluentApiModel.pdb
+D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\bin\Debug\FluentApiModel.dll
+D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\bin\Debug\FluentApiModel.pdb
+D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.csprojResolveAssemblyReference.cache
+D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.dll
+D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.pdb
