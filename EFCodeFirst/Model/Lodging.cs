@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,12 @@ namespace Model
             get;
             set;
         }
+
+        /// <summary>
+        /// -与Destination（主键）具有依赖关系
+        /// 此处Destination属性代表单个Destination实例
+        /// </summary>
+        [Required]
         public Destination Destination
         {
             get;

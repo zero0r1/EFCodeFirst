@@ -15,13 +15,12 @@ namespace BreakAwayConsole
         static void Main(string[] args)
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BreakAwayContext>());
-            //InsertDestination();
-            //UpdatePersonDestination();
+            InsertDestination();
+            UpdatePersonDestination();
 
-            FluentApiInsertDestination();
-            FluentApiUpdatePersonDestination();
-            //FluentApiInsertPerson();
-            FluentApiUpdatePerson();
+            //FluentApiInsertDestination();
+            //FluentApiUpdatePersonDestination();
+            //FluentApiUpdatePerson();
         }
 
         #region Fluent Api

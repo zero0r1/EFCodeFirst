@@ -1,9 +1,0 @@
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb

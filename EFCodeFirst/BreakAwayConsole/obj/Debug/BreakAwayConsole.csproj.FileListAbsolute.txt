@@ -28,3 +28,19 @@ D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\BreakAwayCons
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\BreakAwayConsole\obj\Debug\BreakAwayConsole.csprojResolveAssemblyReference.cache
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\BreakAwayConsole\bin\Debug\FluentApiModel.dll
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\BreakAwayConsole\bin\Debug\FluentApiModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\BreakAwayConsole.exe.config
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\obj\Debug\BreakAwayConsole.exe
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\obj\Debug\BreakAwayConsole.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\BreakAwayConsole.exe
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\BreakAwayConsole.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\DataAccess.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.SqlServer.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\FluentApiModel.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\Model.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\DataAccess.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\FluentApiModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\Model.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.xml
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.SqlServer.xml
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\obj\Debug\BreakAwayConsole.csprojResolveAssemblyReference.cache

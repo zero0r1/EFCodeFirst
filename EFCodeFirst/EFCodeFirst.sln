@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{F458EBD8-973D-490F-BDC7-DE7FD767EE0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAcess\DataAccess.csproj", "{E6C39DF3-EBA0-4C9F-A7B1-19B8E2B4957A}"
@@ -8,10 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreakAwayConsole", "BreakAwayConsole\BreakAwayConsole.csproj", "{497DDE68-4073-4F6D-A64A-E9033DE98CC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentApiModel", "FluentApiModel\FluentApiModel.csproj", "{544C7C6B-78E5-4B10-8C0C-1278F98DABF3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsDemo", "WindowsFormsApplication1\GraphicsDemo.csproj", "{5BB972A7-4BA9-4CBB-817F-49618E76E465}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRCodeDemo", "QRCodeDemo\QRCodeDemo.csproj", "{EE926709-69EE-4A05-A374-4C5FBFAD8C0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +33,6 @@ Global
 		{544C7C6B-78E5-4B10-8C0C-1278F98DABF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{544C7C6B-78E5-4B10-8C0C-1278F98DABF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{544C7C6B-78E5-4B10-8C0C-1278F98DABF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BB972A7-4BA9-4CBB-817F-49618E76E465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BB972A7-4BA9-4CBB-817F-49618E76E465}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BB972A7-4BA9-4CBB-817F-49618E76E465}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BB972A7-4BA9-4CBB-817F-49618E76E465}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE926709-69EE-4A05-A374-4C5FBFAD8C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE926709-69EE-4A05-A374-4C5FBFAD8C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE926709-69EE-4A05-A374-4C5FBFAD8C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE926709-69EE-4A05-A374-4C5FBFAD8C0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

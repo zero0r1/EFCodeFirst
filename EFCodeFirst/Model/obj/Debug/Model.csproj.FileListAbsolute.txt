@@ -18,3 +18,13 @@ D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\Model\bin\Deb
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\Model\obj\Debug\Model.dll
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\Model\obj\Debug\Model.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\Model.dll.config
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\Model.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\Model.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.xml
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Model.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Model.pdb
