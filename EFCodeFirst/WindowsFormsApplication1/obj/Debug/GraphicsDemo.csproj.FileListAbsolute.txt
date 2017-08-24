@@ -6,3 +6,6 @@ D:\support\xiang\Documents\Visual Studio 2012\Projects\EFCodeFirst\WindowsFormsA
 D:\support\xiang\Documents\Visual Studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\GraphicsDemo.csproj.GenerateResource.Cache
 D:\support\xiang\Documents\Visual Studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\GraphicsDemo.exe
 D:\support\xiang\Documents\Visual Studio 2012\Projects\EFCodeFirst\WindowsFormsApplication1\obj\Debug\GraphicsDemo.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\WindowsFormsApplication1\bin\Debug\GraphicsDemo.exe.config
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\WindowsFormsApplication1\obj\Debug\GraphicsDemo.exe
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\WindowsFormsApplication1\obj\Debug\GraphicsDemo.pdb
