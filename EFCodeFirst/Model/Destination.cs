@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace AnnotationModel
 {
     public class Destination
     {
-        public int DestinationId
+        public Guid DestinationId
         {
             get;
             set;

@@ -37,10 +37,10 @@ D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\D
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.SqlServer.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\FluentApiModel.dll
-D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\Model.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\DataAccess.pdb
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\FluentApiModel.pdb
-D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\Model.pdb
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.xml
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.SqlServer.xml
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\obj\Debug\BreakAwayConsole.csprojResolveAssemblyReference.cache
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\AnnotationModel.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\AnnotationModel.pdb

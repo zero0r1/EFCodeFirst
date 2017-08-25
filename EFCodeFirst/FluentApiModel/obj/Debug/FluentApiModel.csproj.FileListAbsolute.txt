@@ -7,3 +7,8 @@ D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiMode
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.csprojResolveAssemblyReference.cache
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.dll
 D:\support\xiang\documents\visual studio 2012\Projects\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\bin\Debug\FluentApiModel.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\bin\Debug\FluentApiModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.csprojResolveAssemblyReference.cache

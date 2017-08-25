@@ -25,6 +25,6 @@ D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\Entity
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.xml
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.xml
-D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Model.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Model.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

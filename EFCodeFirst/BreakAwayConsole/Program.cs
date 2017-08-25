@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
+using AnnotationModel;
 using FluentApiModel;
 using DataAccess;
 using System.Data.Entity;
@@ -14,13 +14,17 @@ namespace BreakAwayConsole
     {
         static void Main(string[] args)
         {
+            //当发现数据库结构发生改变,自动删除数据库并重新创建新结构
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BreakAwayContext>());
+
+            //当发现数据库结构发生改变,自动删除数据库并重新创建新结构
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<FluentApiBreakAwayContext>());
+
             InsertDestination();
             UpdatePersonDestination();
 
             //FluentApiInsertDestination();
             //FluentApiUpdatePersonDestination();
-            //FluentApiUpdatePerson();
         }
 
         #region Fluent Api
@@ -51,8 +55,25 @@ namespace BreakAwayConsole
                         Reading = 200,
                         Units = "300"
                     },
+                },
+                Lodgings = new List<FluentApiModel.Lodging>() {
+                     new FluentApiModel.Lodging
+                    {
+                        Name = "lodging Name",
+                        Owner = "lodging Owner",
+                        IsResort = true,
+                        MilesFromNearestAirport = 1.1M
+                    },
+                     new FluentApiModel.Lodging
+                     {
+                         Name = "lodging Name2",
+                        Owner = "lodging Owner2",
+                        IsResort = true,
+                        MilesFromNearestAirport = 2.2M
+                     }
                 }
             };
+
 
             using (var context = new FluentApiBreakAwayContext())
             {
@@ -69,6 +90,8 @@ namespace BreakAwayConsole
                 context.SaveChanges();
             }
         }
+
+
         static void FluentApiUpdatePerson()
         {
             using (var context = new FluentApiBreakAwayContext())
@@ -98,12 +121,12 @@ namespace BreakAwayConsole
         #region DataAnnotation
         static void InsertDestination()
         {
-            var destination = new Model.Destination
+            var destination = new AnnotationModel.Destination
             {
                 Country = "Indonesia",
                 Description = "EcoTourism at its best in exquisite Bali",
                 Name = "Bali",
-                Address = new Model.Address
+                Address = new AnnotationModel.Address
                 {
                     City = "shanghai",
                     State = "huayi",

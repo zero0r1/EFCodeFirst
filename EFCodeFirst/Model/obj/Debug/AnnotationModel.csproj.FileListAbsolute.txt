@@ -1,0 +1,9 @@
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\AnnotationModel.dll.config
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\AnnotationModel.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\AnnotationModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.xml
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.dll
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.pdb

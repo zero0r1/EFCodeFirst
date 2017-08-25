@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{F458EBD8-973D-490F-BDC7-DE7FD767EE0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnotationModel", "Model\AnnotationModel.csproj", "{F458EBD8-973D-490F-BDC7-DE7FD767EE0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAcess\DataAccess.csproj", "{E6C39DF3-EBA0-4C9F-A7B1-19B8E2B4957A}"
 EndProject

@@ -68,9 +68,9 @@
       <Project>{544c7c6b-78e5-4b10-8c0c-1278f98dabf3}</Project>
       <Name>FluentApiModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\Model\AnnotationModel.csproj">
       <Project>{f458ebd8-973d-490f-bdc7-de7fd767ee0c}</Project>
-      <Name>Model</Name>
+      <Name>AnnotationModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

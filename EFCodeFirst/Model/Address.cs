@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace AnnotationModel
 {
     [ComplexType]
     public class Address
