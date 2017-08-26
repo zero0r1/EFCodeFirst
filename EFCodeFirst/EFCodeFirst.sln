@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentApiModel", "FluentApi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{50859D81-CCF7-4D84-B35E-7BDBCEE67016}"
 	ProjectSection(SolutionItems) = preProject
-		README.txt = README.txt
+		Note.txt = Note.txt
 		Use attributes in Code First.txt = Use attributes in Code First.txt
 	EndProjectSection
 EndProject
