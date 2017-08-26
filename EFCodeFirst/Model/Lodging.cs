@@ -75,7 +75,9 @@ namespace AnnotationModel
        */
 
 
-        //Configuring multiple bidirectional relationships from Lodging to Person
+        //你可以添加配置（使用Data Annotations或Fluent API）到modelBuilder来表明这种关系。使用Data Annotations，
+        //你需要使用一个特性标记叫做InverseProperty
+        //你可将特性标记放在关系的任何一端（或两端都放）。
         [InverseProperty("PrimaryContactFor")]
         public Person PrimaryContact
         {
@@ -83,7 +85,9 @@ namespace AnnotationModel
             set;
         }
 
-        //Configuring multiple bidirectional relationships from Lodging to Person
+        //你可以添加配置（使用Data Annotations或Fluent API）到modelBuilder来表明这种关系。使用Data Annotations，
+        //你需要使用一个特性标记叫做InverseProperty
+        //你可将特性标记放在关系的任何一端（或两端都放）。
         [InverseProperty("SecondaryContactFor")]
         public Person SecondaryContact
         {
