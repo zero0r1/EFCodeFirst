@@ -26,6 +26,13 @@ namespace FluentApiModel
             set;
         }
 
+        public decimal JustDecimal
+        {
+            get;
+            set;
+        }
+
+
         public string Description
         {
             get;

@@ -1,0 +1,3 @@
+Default DataBase Connection: 
+UserName: (localdb)\v11.0
+Verification: Widnows User

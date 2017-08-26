@@ -7,3 +7,4 @@ D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\Entity
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.csprojResolveAssemblyReference.cache

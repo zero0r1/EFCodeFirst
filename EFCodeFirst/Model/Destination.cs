@@ -28,6 +28,12 @@ namespace AnnotationModel
             set;
         }
 
+        public decimal JustDecimal
+        {
+            get;
+            set;
+        }
+
         [MaxLength(500)]
         public string Description
         {

@@ -20,11 +20,11 @@ namespace BreakAwayConsole
             //当发现数据库结构发生改变,自动删除数据库并重新创建新结构
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<FluentApiBreakAwayContext>());
 
-            InsertDestination();
-            UpdatePersonDestination();
+            //InsertDestination();
+            //UpdatePersonDestination();
 
-            //FluentApiInsertDestination();
-            //FluentApiUpdatePersonDestination();
+            FluentApiInsertDestination();
+            FluentApiUpdatePersonDestination();
         }
 
         #region Fluent Api

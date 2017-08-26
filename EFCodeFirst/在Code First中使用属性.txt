@@ -1,0 +1,52 @@
+Length字长:
+Convention默认规则			max (type specified by database)max(类型由数据库指定)
+Data Annotation				MinLength(nn)MaxLength(nn)StringLength(nn)
+Fluent						Entity<T>.Property(t=>t.PropertyName).HasMaxLength(nn)
+
+数据类型:
+Convention默认规则			The default column data type is determined by the database provider you are using. For SQL Server some example default data types are:默认的列数据类型由数据库决定，对SQL Server而言如下：String : nvarchar(max)Integer:intByte Array:varbinary(max)Boolen:bit
+Data Annotation				Column(TypeName="XXX")
+Fluent						Entity<T>.Property(t=>t.PropertyName).HasColumnType("XXX")
+
+可空性和必需项配置:
+Convention默认规则			Key Properties : not null in database键属性：在数据库中为非空Reference Types (String, arrays): null in the database引用类型（String,数组）：在数据库中可空Value Types (all numeric types, DateTime, bool, char) : not null in database值类型（所有数字类型，日期，布尔，字符）：在数据库为非空Nullable<T> Value Types : null in databaseNullable<T>值类型（可空类型）：在数据库可空
+Data Annotation				Required
+Fluent						Entity<T>.Property(t=>t.PropertyName).IsRequired
+
+映射键:
+Convention默认规则			Properties named Id属性名为IdProperties named [TypeName] + Id属性名为[类型名]+Id
+Data Annotation				Key
+Fluent						Entity<T>.HasKey(t=>t.PropertyName
+
+配置数据库生成的属性:
+Convention默认规则			Integer keys:Identity整型键值：标识列
+Data Annotation				DatabaseGenerated(DatabaseGeneratedOption)
+Fluent						Entity<T>.Property(t=>t.PropertyName).HasDatabaseGeneratedOption(DatabaseGeneratedOption)
+
+为开放式并发环境配置-
+-时间戳或行版本字段:
+Convention默认规则			None无
+Data Annotation				TimeStamp
+Fluent						Entity<T>.Property(t=>t.PropertyName).IsRowVersion()
+
+配置并发非时间戳字段:
+Convention默认规则			None无
+Data Annotation				ConcurrencyCheck
+Fluent						Entity<T>.Property(t=>t.PropertyName).IsConcurrencyToken()
+
+映射到非-Unicode-
+-数据库类型:
+Convention默认规则			All strings map to Unicode-encoded database types所有的字符串都映射到Unicode数据库类型
+Data Annotation				不可用
+Fluent						Entity<T>.Property(t=>t.PropertyName).IsUnicode(boolean)
+
+对Decimal固定有效位数-
+-和小数位数的影响:
+Convention默认规则			Decimals are 18, 2
+Data Annotation				不可用
+Fluent						Entity<T>.Property(t=>t.PropertyName).HasPrecision(n,n)
+
+
+指定复杂类型:
+Data Annotation				System.ComponentModel.DataAnnotations.Schema => [ComplexType],Data Annotation提供了ComplexType特性应用于类上。
+Fluent						modelBuilder.ComplexType<Address>();

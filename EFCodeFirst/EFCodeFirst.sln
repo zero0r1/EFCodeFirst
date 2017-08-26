@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreakAwayConsole", "BreakAw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentApiModel", "FluentApiModel\FluentApiModel.csproj", "{544C7C6B-78E5-4B10-8C0C-1278F98DABF3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{50859D81-CCF7-4D84-B35E-7BDBCEE67016}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+		在Code First中使用属性.txt = 在Code First中使用属性.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
