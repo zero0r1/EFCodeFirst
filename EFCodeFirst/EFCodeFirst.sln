@@ -14,7 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{50859D81-CCF7-4D84-B35E-7BDBCEE67016}"
 	ProjectSection(SolutionItems) = preProject
 		README.txt = README.txt
-		在Code First中使用属性.txt = 在Code First中使用属性.txt
+		Use attributes in Code First.txt = Use attributes in Code First.txt
 	EndProjectSection
 EndProject
 Global
