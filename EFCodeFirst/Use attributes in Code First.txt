@@ -1,5 +1,5 @@
 Length字长:
-Convention默认规则		    max (type specified by database)max(类型由数据库指定)
+Convention默认规则			max (type specified by database)max(类型由数据库指定)
 Data Annotation				MinLength(nn)MaxLength(nn)StringLength(nn)
 Fluent						Entity<T>.Property(t=>t.PropertyName).HasMaxLength(nn)
 
@@ -9,8 +9,8 @@ Data Annotation				Column(TypeName="XXX")
 Fluent						Entity<T>.Property(t=>t.PropertyName).HasColumnType("XXX")
 
 可空性和必需项配置:
-Convention默认规则		  	Key Properties : not null in database键属性：在数据库中为非空Reference Types (String, arrays): null in the database引用类型（String,数组）：在数据库中可空Value Types (all numeric types, DateTime, bool, char) : not null in database值类型（所有数字类型，日期，布尔，字符）：在数据库为非空Nullable<T> Value Types : null in databaseNullable<T>值类型（可空类型）：在数据库可空
-Data Annotation			    Required
+Convention默认规则			Key Properties : not null in database键属性：在数据库中为非空Reference Types (String, arrays): null in the database引用类型（String,数组）：在数据库中可空Value Types (all numeric types, DateTime, bool, char) : not null in database值类型（所有数字类型，日期，布尔，字符）：在数据库为非空Nullable<T> Value Types : null in databaseNullable<T>值类型（可空类型）：在数据库可空
+Data Annotation				Required
 Fluent						Entity<T>.Property(t=>t.PropertyName).IsRequired
 
 映射键:
