@@ -1,52 +1,52 @@
-ï»¿Lengthå­—é•¿:
-Conventioné»˜è®¤è§„åˆ™			max (type specified by database)max(ç±»å‹ç”±æ•°æ®åº“æŒ‡å®š)
+Length×Ö³¤:
+ConventionÄ¬ÈÏ¹æÔò		    max (type specified by database)max(ÀàĞÍÓÉÊı¾İ¿âÖ¸¶¨)
 Data Annotation				MinLength(nn)MaxLength(nn)StringLength(nn)
 Fluent						Entity<T>.Property(t=>t.PropertyName).HasMaxLength(nn)
 
-æ•°æ®ç±»å‹:
-Conventioné»˜è®¤è§„åˆ™			The default column data type is determined by the database provider you are using. For SQL Server some example default data types are:é»˜è®¤çš„åˆ—æ•°æ®ç±»å‹ç”±æ•°æ®åº“å†³å®šï¼Œå¯¹SQL Serverè€Œè¨€å¦‚ä¸‹ï¼šString : nvarchar(max)Integer:intByte Array:varbinary(max)Boolen:bit
+Êı¾İÀàĞÍ:
+ConventionÄ¬ÈÏ¹æÔò			The default column data type is determined by the database provider you are using. For SQL Server some example default data types are:Ä¬ÈÏµÄÁĞÊı¾İÀàĞÍÓÉÊı¾İ¿â¾ö¶¨£¬¶ÔSQL Server¶øÑÔÈçÏÂ£ºString : nvarchar(max)Integer:intByte Array:varbinary(max)Boolen:bit
 Data Annotation				Column(TypeName="XXX")
 Fluent						Entity<T>.Property(t=>t.PropertyName).HasColumnType("XXX")
 
-å¯ç©ºæ€§å’Œå¿…éœ€é¡¹é…ç½®:
-Conventioné»˜è®¤è§„åˆ™			Key Properties : not null in databaseé”®å±æ€§ï¼šåœ¨æ•°æ®åº“ä¸­ä¸ºéç©ºReference Types (String, arrays): null in the databaseå¼•ç”¨ç±»å‹ï¼ˆString,æ•°ç»„ï¼‰ï¼šåœ¨æ•°æ®åº“ä¸­å¯ç©ºValue Types (all numeric types, DateTime, bool, char) : not null in databaseå€¼ç±»å‹ï¼ˆæ‰€æœ‰æ•°å­—ç±»å‹ï¼Œæ—¥æœŸï¼Œå¸ƒå°”ï¼Œå­—ç¬¦ï¼‰ï¼šåœ¨æ•°æ®åº“ä¸ºéç©ºNullable<T> Value Types : null in databaseNullable<T>å€¼ç±»å‹ï¼ˆå¯ç©ºç±»å‹ï¼‰ï¼šåœ¨æ•°æ®åº“å¯ç©º
-Data Annotation				Required
+¿É¿ÕĞÔºÍ±ØĞèÏîÅäÖÃ:
+ConventionÄ¬ÈÏ¹æÔò		  	Key Properties : not null in database¼üÊôĞÔ£ºÔÚÊı¾İ¿âÖĞÎª·Ç¿ÕReference Types (String, arrays): null in the databaseÒıÓÃÀàĞÍ£¨String,Êı×é£©£ºÔÚÊı¾İ¿âÖĞ¿É¿ÕValue Types (all numeric types, DateTime, bool, char) : not null in databaseÖµÀàĞÍ£¨ËùÓĞÊı×ÖÀàĞÍ£¬ÈÕÆÚ£¬²¼¶û£¬×Ö·û£©£ºÔÚÊı¾İ¿âÎª·Ç¿ÕNullable<T> Value Types : null in databaseNullable<T>ÖµÀàĞÍ£¨¿É¿ÕÀàĞÍ£©£ºÔÚÊı¾İ¿â¿É¿Õ
+Data Annotation			    Required
 Fluent						Entity<T>.Property(t=>t.PropertyName).IsRequired
 
-æ˜ å°„é”®:
-Conventioné»˜è®¤è§„åˆ™			Properties named Idå±æ€§åä¸ºIdProperties named [TypeName] + Idå±æ€§åä¸º[ç±»å‹å]+Id
+Ó³Éä¼ü:
+ConventionÄ¬ÈÏ¹æÔò			Properties named IdÊôĞÔÃûÎªIdProperties named [TypeName] + IdÊôĞÔÃûÎª[ÀàĞÍÃû]+Id
 Data Annotation				Key
 Fluent						Entity<T>.HasKey(t=>t.PropertyName
 
-é…ç½®æ•°æ®åº“ç”Ÿæˆçš„å±æ€§:
-Conventioné»˜è®¤è§„åˆ™			Integer keys:Identityæ•´å‹é”®å€¼ï¼šæ ‡è¯†åˆ—
+ÅäÖÃÊı¾İ¿âÉú³ÉµÄÊôĞÔ:
+ConventionÄ¬ÈÏ¹æÔò			Integer keys:IdentityÕûĞÍ¼üÖµ£º±êÊ¶ÁĞ
 Data Annotation				DatabaseGenerated(DatabaseGeneratedOption)
 Fluent						Entity<T>.Property(t=>t.PropertyName).HasDatabaseGeneratedOption(DatabaseGeneratedOption)
 
-ä¸ºå¼€æ”¾å¼å¹¶å‘ç¯å¢ƒé…ç½®-
--æ—¶é—´æˆ³æˆ–è¡Œç‰ˆæœ¬å­—æ®µ:
-Conventioné»˜è®¤è§„åˆ™			Noneæ— 
+Îª¿ª·ÅÊ½²¢·¢»·¾³ÅäÖÃ-
+-Ê±¼ä´Á»òĞĞ°æ±¾×Ö¶Î:
+ConventionÄ¬ÈÏ¹æÔò			NoneÎŞ
 Data Annotation				TimeStamp
 Fluent						Entity<T>.Property(t=>t.PropertyName).IsRowVersion()
 
-é…ç½®å¹¶å‘éæ—¶é—´æˆ³å­—æ®µ:
-Conventioné»˜è®¤è§„åˆ™			Noneæ— 
+ÅäÖÃ²¢·¢·ÇÊ±¼ä´Á×Ö¶Î:
+ConventionÄ¬ÈÏ¹æÔò			NoneÎŞ
 Data Annotation				ConcurrencyCheck
 Fluent						Entity<T>.Property(t=>t.PropertyName).IsConcurrencyToken()
 
-æ˜ å°„åˆ°é-Unicode-
--æ•°æ®åº“ç±»å‹:
-Conventioné»˜è®¤è§„åˆ™			All strings map to Unicode-encoded database typesæ‰€æœ‰çš„å­—ç¬¦ä¸²éƒ½æ˜ å°„åˆ°Unicodeæ•°æ®åº“ç±»å‹
-Data Annotation				ä¸å¯ç”¨
+Ó³Éäµ½·Ç-Unicode-
+-Êı¾İ¿âÀàĞÍ:
+ConventionÄ¬ÈÏ¹æÔò			All strings map to Unicode-encoded database typesËùÓĞµÄ×Ö·û´®¶¼Ó³Éäµ½UnicodeÊı¾İ¿âÀàĞÍ
+Data Annotation				²»¿ÉÓÃ
 Fluent						Entity<T>.Property(t=>t.PropertyName).IsUnicode(boolean)
 
-å¯¹Decimalå›ºå®šæœ‰æ•ˆä½æ•°-
--å’Œå°æ•°ä½æ•°çš„å½±å“:
-Conventioné»˜è®¤è§„åˆ™			Decimals are 18, 2
-Data Annotation				ä¸å¯ç”¨
+¶ÔDecimal¹Ì¶¨ÓĞĞ§Î»Êı-
+-ºÍĞ¡ÊıÎ»ÊıµÄÓ°Ïì:
+ConventionÄ¬ÈÏ¹æÔò			Decimals are 18, 2
+Data Annotation				²»¿ÉÓÃ
 Fluent						Entity<T>.Property(t=>t.PropertyName).HasPrecision(n,n)
 
 
-æŒ‡å®šå¤æ‚ç±»å‹:
-Data Annotation				System.ComponentModel.DataAnnotations.Schema => [ComplexType],Data Annotationæä¾›äº†ComplexTypeç‰¹æ€§åº”ç”¨äºç±»ä¸Šã€‚
+Ö¸¶¨¸´ÔÓÀàĞÍ:
+Data Annotation				System.ComponentModel.DataAnnotations.Schema => [ComplexType],Data AnnotationÌá¹©ÁËComplexTypeÌØĞÔÓ¦ÓÃÓÚÀàÉÏ¡£
 Fluent						modelBuilder.ComplexType<Address>();
