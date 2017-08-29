@@ -38,3 +38,5 @@ D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\Da
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.pdb
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.pdb
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.dll.config
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache

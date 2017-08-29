@@ -44,11 +44,15 @@ namespace AnnotationModel
         Code First 将不能够与相关导航属性相匹配。您将需要提供一些额外的配置。
         例如，如果你想跟踪每个住所的两个联系人怎么办？这就需要在Lodging类中有一个PromaryContact和一个SecondaryContact属性。
         */
+
+        //对应Lodging.PrimaryContact
         public List<Lodging> PrimaryContactFor
         {
             get;
             set;
         }
+
+        //对应Lodging.SecondaryContact
         public List<Lodging> SecondaryContactFor
         {
             get;

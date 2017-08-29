@@ -83,10 +83,8 @@ namespace DataAccess
                 //HasMany(d => d.Lodgings).WithOptional(l => l.Destination);
 
                 //使Code First知晓你想建立一个必须的（Required）一对多关系
-                //HasMany(d => d.Lodgings).WithRequired(l => l.Destination);
+                HasMany(d => d.Lodgings).WithRequired(l => l.Destination);
                 #endregion
-
-
             }
         }
 
@@ -99,6 +97,9 @@ namespace DataAccess
 
                 Property(l => l.Name).IsRequired().HasMaxLength(200);
 
+                //使用Has/With语句来指定关系的两端
+                //第一个配置的一端为Lodging.PrimaryContact，另一端为Person.PrimaryContactFor.
+                //第二个配置是针对SecondaryContact和SecondaryContactFor两者关系建立的
                 HasOptional(l => l.PrimaryContact).WithMany(p => p.PrimaryContactFor);
                 HasOptional(l => l.SecondaryContact).WithMany(p => p.SecondaryContactFor);
             }
@@ -124,7 +125,13 @@ namespace DataAccess
         {
             public InternetSpecialConfiguration()
             {
+                //使用Fluent API来修改外键
+                //Fluent API并没有提供配置属性作为外键的简单方法。你要使用专门的关系API来配置正确的外键。
+                //而且你不能简单地配置关系的片断，你需要首先指定你想配置的关系类型（前面已经提到）然后才能应用修改。
+                //为了指定关系，需要从IneternetSpecial实体开始，我们直接在modelBuilder中进行配置
                 //定义AccommodationId为外键 Foreign key
+                //在默认情况下，我们先要设置关系而不打破Code First建立的默认关系
+                //再添加了HasForeignKey方法来为关系指定外键
                 HasRequired(s => s.Accommodation).WithMany(l => l.InternetSpecials).HasForeignKey(s => s.AccommodationId);
             }
         }

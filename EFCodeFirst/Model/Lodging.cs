@@ -50,7 +50,6 @@ namespace AnnotationModel
         }
 
         //你也可以将ForeignKey特性放在导航属性上来通知哪个属性是关系的外键。
-
         public Guid DestinationId
         {
             get;

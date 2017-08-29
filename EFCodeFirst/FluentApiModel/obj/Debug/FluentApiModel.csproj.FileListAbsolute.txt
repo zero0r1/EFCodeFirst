@@ -12,3 +12,4 @@ D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\bin\Deb
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.dll
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.pdb
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.csprojResolveAssemblyReference.cache
+D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.csproj.CoreCompileInputs.cache
