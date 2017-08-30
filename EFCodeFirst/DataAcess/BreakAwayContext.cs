@@ -10,6 +10,8 @@ namespace DataAccess
 {
     public class BreakAwayContext : DbContext
     {
+        //定义外部可访问数据
+        //<code>
         public DbSet<Destination> Destinations
         {
             get;
@@ -20,5 +22,18 @@ namespace DataAccess
             get;
             set;
         }
+
+        public DbSet<Person> Persons
+        {
+            get;
+            set;
+        }
+
+        public DbSet<Trip> Trips
+        {
+            get;
+            set;
+        }
+        //</code>
     }
 }

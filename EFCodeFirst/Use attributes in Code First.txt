@@ -50,3 +50,370 @@ Fluent						Entity<T>.Property(t=>t.PropertyName).HasPrecision(n,n)
 指定复杂类型:
 Data Annotation				System.ComponentModel.DataAnnotations.Schema => [ComplexType],Data Annotation提供了ComplexType特性应用于类上。
 Fluent						modelBuilder.ComplexType<Address>();
+
+
+使用Fluent API配置打开或关闭客户端级联删除功能
+NOTE:
+	Annotation 不支持此功能
+Fluent API 使用的方法是 WillCascadeOnDelete ，以一个布尔值作为参数。此配置适用于所有关系，因此首先需要使用指定一个配对的关系，然后调用 WillCascadeOnDelete 方法。
+HasRequired(l = >l.Destination).WithMany(d = >d.Lodgings).WillCascadeOnDelete(false)
+
+探索多对多关系
+
+EF框架支持多对多关系。让我们来看看Code First是如何在生成数据库时响应类间的多对多关系。
+
+在使用database first策略时如果有多对多关系，EF框架可以创建多对多映射，条件是数据库内联表只包含相关实体的主键。这种映射规则也适用于Code First。
+
+我们添加一个新的类：Acitivity到模型中，如代码4-15，将于Trip类相关联。一个Trip类可以有一些Activites日程，而一个Activity日程又可以计划好几个trips(行程)。因此Trip和Activity就会有多对多关系。
+
+Example 4-15. A new class, Activity
+
+隐藏代码
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+namespace Model {
+    public class Activity {
+        public int ActivityId {
+            get;
+            set;
+        } [Required, MaxLength(50)] public string Name {
+            get;
+            set;
+        }
+        public List < Trip > Trips {
+            get;
+            set;
+        }
+    }
+}
+在Activity类中有一个List<Trip>，我们也添加了一个List<Activity>到Trip类到另一端形成多对多关系。
+
+隐藏代码
+public List < Activity > Activities {
+    get;
+    set;
+}
+再次运行程序，因为模型变化Code First将重新创建数据库。Code First根据默认规则识别出了多对多关系，建立了内联表，并配置了合适的键。两个内联表的主键都作为外键指向了内联表，如图4-10所示。
+
+
+
+注意到Code First的默认规则创建的表名合并使用了两个类的类名。它也使用了我们在前面创建外键使用的模式来创建外键。在第5章，我们将关注于表和列的映射，到时你会学习到如何使用配置为内联表指定表名和列名。
+
+一旦多对对关系建立，其行为就与EF早期版本中多对多关系所表现出来的是一样的。你可以通过类属性查询，添加和删除相关对象。在后台，EF框架将使用它的内置特性来协助数据库创建集成的内联表的select,insert,update和delete命令。
+
+例如，如下的查询寻找一次单独的trip和计划实施的相关Activities.
+
+隐藏代码
+var tripWithActivities = context.Trips.Include("Activities").FirstOrDefault();
+查询是对类进行的，没有必要关心trip和activities是怎样在数据库连接的。EF框架会自行配置SQL语句执行内联，并返所有适合于第一条trip的所有activities记录。虽然不需要自行构建SQL语句，但一定要记住不管你的类的结构或数据库构架如何，EF框架构建的SQL都是可以通用的。
+
+输出的结果是trip和其activities的图。图4-11显示了Trip类在一个调试窗口的信息。你可以看到其包含两个activites，都最从数据库中提取出来匹配这次Trip的。
+
+
+
+
+
+不必知道它的存在，EF框架会维护内联表并通过来组织表之间的Join。同样地，任何时候你进行插入，更新或删除操作，EF框架将制定出正确的内联SQL语句，不用在你的代码中作任何关注。
+
+使用单边导航的关系
+
+到目前为止我们已经观察了导航属性已经定义在两个类中的关系。但是，这并不是EF框架能够工作所必须的。
+
+在你的域中，从Destination导航到其相关的Lodging选项是一种通常的情况，但是可能很少需要从Lodging导航回Destination.让我们将Destination从Lodging类中移走（代码4-16）。
+
+Example 4-16. Navigation property removed from Lodging class
+
+隐藏代码
+public class Lodging {
+    public int LodgingId {
+        get;
+        set;
+    }
+    public string Name {
+        get;
+        set;
+    }
+    public string Owner {
+        get;
+        set;
+    }
+    public bool IsResort {
+        get;
+        set;
+    }
+    public decimal MilesFromNearestAirport {
+        get;
+        set;
+    }
+    public int DestinationId {
+        get;
+        set;
+    } //public Destination Destination { get; set; } 		    public  List<InternetSpecial> InternetSpecials {  get ;  set ; }    public  Person PrimaryContact {  get ;  set ; }    public  Person SecondaryContact {  get ;  set ; }   } 
+    
+EF框架可以处理这种情况。这里清晰地定义了从Lodging到Destination之间的关系，依据的是Destination类中的Lodgings属性。这仍然会使用模型构建器到Lodging类中去寻找外键Lodging.DestinationId满足默认规则。
+
+现在我们前进一步，将Lodging类中的外键属性删除，如代码4-17.
+
+Example 4-17. Foreign key commented out
+
+隐藏代码
+public class Lodging {
+    public int LodgingId {
+        get;
+        set;
+    }
+    public string Name {
+        get;
+        set;
+    }
+    public string Owner {
+        get;
+        set;
+    }
+    public bool IsResort {
+        get;
+        set;
+    }
+    public decimal MilesFromNearestAirport {
+        get;
+        set;
+    } //public int DestinationId { get; set; } 		    //public Destination Destination { get; set; } 		   } 
+    
+是否还记得如果不定义一个外键在你的类中Code First默认规则会自动引入一个？同样的规则适用于在单边定义的导航属性。Destination仍然有一个属性定义 了到Lodging的关系。图4-13显示了有一个Destination_DestinationId列加入到的Lodgings表中。这可能会使你回想起有关外键列的命名规则：[Navigation Property Name] + [Primary Key Name]。但是我们在Lodgin类里不再有一个导航属性。如果在依赖实体中没有导航属性加以定义，Code First将会使用[Principal Type Name] + [Primary KeyName].在这种情况下，使用了同一个名字。
+
+
+
+那么如果我们试图在另一个类中只定义外键而没有导航属性呢，EF框架本身支持这种情况，但Code First不支持。Code First需要至少一个导航属性来创建关系。如果你移除了两边的导航属性，Code First将只将外键属性作为任何类中的其他属性而不会在数据库中创建约束。
+
+现在我将外键属性调整为默认规则无法检测到的情况。我们用LocationId替代DestinationId,如代码4-16.记住我们没有导航属性，仍然被注释着。
+
+Example 4-18. Foreign key with unconventional name
+
+隐藏代码
+public class Lodging {
+    public int LodgingId {
+        get;
+        set;
+    }
+    public string Name {
+        get;
+        set;
+    }
+    public string Owner {
+        get;
+        set;
+    }
+    public bool IsResort {
+        get;
+        set;
+    }
+    public decimal MilesFromNearestAirport {
+        get;
+        set;
+    }
+    public int LocationId {
+        get;
+        set;
+    } //public Destination Destination { get; set; } 		    public  List<InternetSpecial> InternetSpecials {  get ;  set ; }    public  Person PrimaryContact {  get ;  set ; }    public  Person SecondaryContact {  get ;  set ; }   } 
+    
+感谢Destination.Lodgings，Code First知道两个类中存在关系。但它无法找到一个符合约定的外键。我们之前已经铺了路，现在还需要一些配置来帮助Code First识别外键。
+
+在前面的例子里，我们将ForeignKey特性标记放在依赖类的导航属性或者将其放在外键属性上，告知哪个导航属性属于它。但我们在依赖类中不再有一个导航属性。幸运的是，我们可以将Data Annotations的标记放在导航属性上（Destination.Lodgings）。Code First知道Lodging是关系中的依赖类，因此它会为外键在此类中寻找有关字段：
+
+隐藏代码
+[ForeignKey("LocationId")] public List < Lodging > Lodgings {
+    get;
+    set;
+}
+Fluent API也能为这种单侧导航属性创建关系。配置的Has部分必须指定一个导航属性，而With部分如果没有反向导航属性就留空。一旦指定了Has和With语句，就可以调用HasForeignKey方法：
+
+隐藏代码
+modelBuilder.Entity < Destination > ().HasMany(d = >d.Lodgings).WithRequired().HasForeignKey(l = >l.LocationId);
+在我们需要创建单边关系时，很多情况下我们想要从Lodging导航回相应的Destination。我们恢复对Lodging类的调整。取消对Destination属性的注释并将外键属性恢复，如代码4-19.你也需要将ForegnKey标记从Destination.Lodging上移除,删除上述刚刚添加的Fluent API配置。
+
+Example 4-19. Lodging class reverted to include navigation property and conventional foreign key
+
+隐藏代码
+public class Lodging {
+    public int LodgingId {
+        get;
+        set;
+    }
+    public string Name {
+        get;
+        set;
+    }
+    public string Owner {
+        get;
+        set;
+    }
+    public bool IsResort {
+        get;
+        set;
+    }
+    public decimal MilesFromNearestAirport {
+        get;
+        set;
+    }
+    public int DestinationId {
+        get;
+        set;
+    }
+    public Destination Destination {
+        get;
+        set;
+    }
+    public List < InternetSpecial > InternetSpecials {
+        get;
+        set;
+    }
+    public Person PrimaryContact {
+        get;
+        set;
+    }
+    public Person SecondaryContact {
+        get;
+        set;
+    }
+}
+使用一对一关系
+
+有一种关系Code First必须进行配置后才能工作，这种关系就是一对一关系。当你在模型中定义一对一关系，你需要在每个类中都要使用引用导航。如果你有一个引用和一个集合，Code First就会将引用视为依赖类，推测应该有一个外键。如果有两个集合，Code First视为多对多关系，将外键放在一个单独的内联表中。但是，Code First看到两个引用时，它无法识别哪个类应该有一个外键。
+
+我们添加一个新的PersonPhoto类，包含一个针对属于Person类中的people的photo和caption属性。由于photo将会指定给特定的person，我们使用PersonId作为键属性。并有没有一个默认的键属性，需要如下所示的Data Annotations配置（代码4-20）：
+
+Example 4-20. The PersonPhoto class
+
+隐藏代码
+using System.ComponentModel.DataAnnotations;
+namespace Model {
+    public class PersonPhoto { [Key] public int PersonId {
+            get;
+            set;
+        }
+        public byte[] Photo {
+            get;
+            set;
+        }
+        public string Caption {
+            get;
+            set;
+        }
+        public Person PhotoOf {
+            get;
+            set;
+        }
+    }
+}
+我们在Person中也添加一个Photo属性，这样可以在两端都可以导航。
+
+隐藏代码
+public PersonPhoto Photo {
+    get;
+    set;
+}
+记住在这种情况下Code First无法确认哪个类是依赖类。当其尝试构建模型时，就会抛出一个异常，告知你它需要更多信息：
+
+隐藏代码
+Unable to determine the principal end of an association between the types 'Model.PersonPhoto'
+and 'Model.Person'.The principal end of this association must be explicitly configured using either the relationship fluent API or data annotations.无法确认在类型'Model.PersonPhoto'和'Model.Person'之间联系的主端。这种联系的主端必须使用Fluent API或data annotations进行显示配置；
+个问题可以很容易地使用ForeignKey特性标记来解决，将标记放在依赖类上指出其包含外键。当配置一对一关系时，EF框架需要依赖类的主键也应是外键。在我们的案例中，PersonPhoto是依赖类，而其键，PersonPhoto.PersonId，也应是一个外键。我们将ForeignKey标记加在PersonPhoto.PersonId属性上，如代码4-21，记住在加入ForeignKey时要为关系指定导航属性。
+
+Example 4-21. Adding the ForeignKey annotation
+
+隐藏代码
+public class PersonPhoto { [Key][ForeignKey("PhotoOf")] public int PersonId {
+        get;
+        set;
+    }
+    public byte[] Photo {
+        get;
+        set;
+    }
+    public string Caption {
+        get;
+        set;
+    }
+    public Person PhotoOf {
+        get;
+        set;
+    }
+}
+运行程序会成功创建新数据库标，尽管你会看到EF框架并没有很好地处理单词"Photo",还是将其复数化（第5章你会学习如何为表指定名称），但是PersonId现在即是PK又是FK。如果你观察PersonPhoto_PhotoOf外键约束细节，还可以看到这里显示People.PersonId在关系中是主表/列，而PersonPhotoes.PersonId是外键表/列（图4-14）：
+
+
+
+在本章前面，介绍过可以将ForeignKey标记放在导航属性上，也可以指定外键属性的名称（在本例中，就是PersonId）.由于两个类都包含PersonId属性，Code First仍不能确认哪个类包含外键，因此你不能用这样的方式来为此种场景配置。
+
+当然，我们也可以Fluent API来进行配置。我们假定这时的关系是一对零或一对一，也就是PersonPhoto必须有一个Person对应而一个Person不必一定有一个PersonPhoto对应。我们使用HasRequired和WithOptinal联合使用来指定这种情况：
+
+隐藏代码
+modelBuilder.Entity < PersonPhoto > ().HasRequired(p = >p.PhotoOf).WithOptional(p = >p.Photo);
+这足以让Code First将PersonPhoto视作依赖类。我们想要将Person类作为主类而PersonPhoto辅助类，因为一个Person可以存在没有PersonPhoto的情况，但是一个PersonPhoto必须有一个Person.
+
+注意你没有必要使用HasForeignKey来指定PersonPhot.PersonId作为外键。这是因为EF框架可以直接将依赖项的主键作为外键使用。由于没有选择，Code First会将这种唯一情况推断出来。事实上，Fluent API也不会让你使用HasForeignKey，在HasRequired和WithOptional方法后的智能感知里该方法根本不可用。
+
+当两端都是Required时配置一对一关系
+
+现在我们来告诉Code First一个Person必须有一个PersonPhoto（即也是Required）。使用Data Annotations，可以将Rrequired标记放在任何类型的属性上来实现（不一定非是原生类型）：
+
+隐藏代码
+[Required] public PersonPhoto Photo {
+    get;
+    set;
+}
+现在更新Main方法来调用InserPerson方法（见第3章），运行程序。在运行SaveChanges时会抛出异常，EF框架的验证API报告对PersonPhoto的Required要求验证失败。
+
+Ensuring that the sample code honors the required Photo
+
+如何修正代码？
+
+如果你想让Photo属性为Required又要避免验证错误，可以修改InsertPerson和UpdatePerson方法以便可将数据添加到Photo字段中。为了保持代码的简洁，我们只填充一个单一的字节到Photo的byte数组里而不是使用实际的图片。
+
+在InsertPerson方法里，修改代码实例化一个新的Person对象添加Photo属性，如代码4-22：
+
+Example 4-22. Modifying the InsertPerson method to add a Photo to the new Person
+
+隐藏代码
+var person = new Person {
+    FirstName = "Rowan",
+    LastName = "Miller",
+    SocialSecurityNumber = 12345678,
+    Photo = new PersonPhoto {
+        Photo = new Byte[] {
+            0
+        }
+    }
+};
+在UpdatePerson方法中，我们添加了一些代码来保证任何已添加的Person数据都会在更新时同时获得一个Photo。修改UpdatePerson方法见代码4-23：
+
+Example 4-23. Modification to UpdatePerson to ensure existing Person data has a Photo
+
+隐藏代码
+private static void UpdatePerson() {
+    using(var context = new BreakAwayContext()) {
+        var person = context.People.Include("Photo").FirstOrDefault();
+        person.FirstName = "Rowena";
+        if (person.Photo == null) {
+            person.Photo = new PersonPhoto {
+                Photo = new Byte[] {
+                    0
+                }
+            };
+        }
+        context.SaveChanges();
+    }
+}
+更新方法使用Include方法来获取数据库中Person的图片。然后检查Person对象是否有Photo数据，如果没有就添加一个新的。现在Person类中的Photo的Required要求得到满足，就可以在任何时候成功执行InsertPerson和UpdatePerson方法。
+
+使用Fluent API配置一对一关系
+
+毫无疑问，也可以使用Fluent API来配置同样的关系。但首先需要让Code First知道哪个类为主哪个类为辅。如果两端均为Required，不能简单地从多重关系上推测出来。
+
+你可以跟随在WidthRequired后面来调用HasRequired方法 。但是如果你开始于HasRequired，你会在WithReuired的位置有两个附加选择：WithRequiredPrincipal 和WithRequiredDependent。这些方法将你要配置的实体考虑了进去（就是你选择的基于模型构建器或者EntityTypeConfiguration类建立的实体）。选择WithRequiredPrincipal将会使实体配置为主类，意味着该类包含有关系的主键。选择WithRequiredDependent会使实体配置为辅助类，意味着该类包含有关系的外键。
+
+假设你想将PersonPhoto配置为依赖类，应该使用下列配置代码：
+
+隐藏代码
+modelBuilder.Entity < PersonPhoto > ().HasRequired(p = >p.PhotoOf).WithRequiredDependent(p = >p.Photo());
+配置两端都是Optional的一对一的关系其方法是类似的，除了开始于HasOptional外还应该选择是WithOptionalPrincipal 还是 WithOptionalDependent。

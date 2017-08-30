@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define FluentApi
+//#define Annotation
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +22,21 @@ namespace BreakAwayConsole
             //当发现数据库结构发生改变,自动删除数据库并重新创建新结构
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<FluentApiBreakAwayContext>());
 
-            //InsertDestination();
-            //UpdatePersonDestination();
+
+#if Annotation
+
+            InsertDestination();
+            UpdatePersonDestination();
+            DeleteDestinationInMemoryAndDbCascade();
+            //DeleteDestinationInMemoryAndDbCascade2();
+            SelectTripWithActivities();
+#endif
+#if FluentApi
 
             FluentApiInsertDestination();
             FluentApiUpdatePersonDestination();
+            FluentApiDeleteDestinationInMemoryAndDbCascade();
+#endif
         }
 
         #region Fluent Api
@@ -45,12 +57,12 @@ namespace BreakAwayConsole
                 Info = new FluentApiModel.PersonalInfo
                 {
                     DietryRestrictions = "DietryRestrictions",
-                    Height = new Measurement
+                    Height = new FluentApiModel.Measurement
                     {
                         Reading = 100,
                         Units = "200"
                     },
-                    Weight = new Measurement
+                    Width = new FluentApiModel.Measurement
                     {
                         Reading = 200,
                         Units = "300"
@@ -81,6 +93,7 @@ namespace BreakAwayConsole
                 context.SaveChanges();
             }
         }
+
         static void FluentApiUpdatePersonDestination()
         {
             using (var context = new FluentApiBreakAwayContext())
@@ -90,7 +103,6 @@ namespace BreakAwayConsole
                 context.SaveChanges();
             }
         }
-
 
         static void FluentApiUpdatePerson()
         {
@@ -102,6 +114,64 @@ namespace BreakAwayConsole
             }
         }
 
+        /// <summary>
+        /// 这个功能演示联级删除 FluentApi
+        /// </summary>
+        static void FluentApiDeleteDestinationInMemoryAndDbCascade()
+        {
+            Guid destinationId;
+            using (var context = new FluentApiBreakAwayContext())
+            {
+                var destination = new FluentApiModel.Destination
+                {
+                    Name = "Sample Destination",
+                    Address = new FluentApiModel.Address
+                    {
+                        City = "City",
+                        StreetAddress = "StreetAddress",
+                        State = "State",
+                        ZipCode = "ZipCode"
+                    },
+                    Info = new FluentApiModel.PersonalInfo
+                    {
+                        DietryRestrictions = "DietryRestrictions",
+                        Height = new FluentApiModel.Measurement
+                        {
+                            Reading = 0.1M,
+                            Units = "0.2"
+                        },
+                        Width = new FluentApiModel.Measurement
+                        {
+                            Reading = 1.1M,
+                            Units = "1.2"
+                        }
+                    },
+                    Lodgings = new List<FluentApiModel.Lodging>
+                    {
+                        new FluentApiModel.Lodging
+                        {
+                            Name = "Lodging One"
+                        },
+                        new FluentApiModel.Lodging
+                        {
+                            Name = "Lodging Two"
+                        }
+                    }
+                };
+
+                context.Destinations.Add(destination);
+                context.SaveChanges();
+                destinationId = destination.DestinationId;
+            }
+            using (var context = new FluentApiBreakAwayContext())
+            {
+                var destination = context.Destinations.Include("Lodgings").Single(d => d.DestinationId == destinationId);
+                var aLodging = destination.Lodgings.FirstOrDefault();
+                context.Destinations.Remove(destination);
+                Console.WriteLine("State of one Lodging: {0}", context.Entry(aLodging).State.ToString());
+                context.SaveChanges();
+            }
+        }
         //static void FluentApiInsertPerson()
         //{
         //    var person = new FluentApiModel.Person
@@ -119,6 +189,28 @@ namespace BreakAwayConsole
         #endregion
 
         #region DataAnnotation
+        static void SelectTripWithActivities()
+        {
+            //多对多关系
+            var trips = new AnnotationModel.Trip
+            {
+                Activities = new List<Activity>()
+                 {
+                     new Activity
+                     {
+                          Name="Name",
+                     }
+                 }
+            };
+
+            using (var context = new BreakAwayContext())
+            {
+                context.Trips.Add(trips);
+                context.SaveChanges();
+                var tripWithActivities = context.Trips.Include("Activities").FirstOrDefault();
+            }
+        }
+
         static void InsertDestination()
         {
             var destination = new AnnotationModel.Destination
@@ -132,6 +224,20 @@ namespace BreakAwayConsole
                     State = "huayi",
                     ZipCode = "000000",
                     StreetAddress = "yishanlu"
+                },
+                Info = new AnnotationModel.PersonalInfo
+                {
+                    DietryRestrictions = "DietryRestrictions",
+                    Height = new AnnotationModel.Measurement
+                    {
+                        Reading = 0.1M,
+                        Units = "0.2"
+                    },
+                    Width = new AnnotationModel.Measurement
+                    {
+                        Reading = 1.1M,
+                        Units = "1.2"
+                    }
                 }
             };
 
@@ -148,6 +254,126 @@ namespace BreakAwayConsole
                 var destination = context.Destinations.FirstOrDefault();
                 destination.Country = "Rowena";
                 context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// 这个功能演示联级删除 Annotation
+        /// </summary>
+        static void DeleteDestinationInMemoryAndDbCascade()
+        {
+            Guid destinationId;
+            using (var context = new BreakAwayContext())
+            {
+                var destination = new AnnotationModel.Destination
+                {
+                    Name = "Sample Destination",
+                    Address = new AnnotationModel.Address
+                    {
+                        City = "City",
+                        StreetAddress = "StreetAddress",
+                        State = "State",
+                        ZipCode = "ZipCode"
+                    },
+                    Info = new AnnotationModel.PersonalInfo
+                    {
+                        DietryRestrictions = "DietryRestrictions",
+                        Height = new AnnotationModel.Measurement
+                        {
+                            Reading = 0.1M,
+                            Units = "0.2"
+                        },
+                        Width = new AnnotationModel.Measurement
+                        {
+                            Reading = 1.1M,
+                            Units = "1.2"
+                        }
+                    },
+                    Lodgings = new List<AnnotationModel.Lodging>
+                    {
+                        new AnnotationModel.Lodging
+                        {
+                            Name = "Lodging One"
+                        },
+                        new AnnotationModel.Lodging
+                        {
+                            Name = "Lodging Two"
+                        }
+                    }
+                };
+
+                context.Destinations.Add(destination);
+                context.SaveChanges();
+                destinationId = destination.DestinationId;
+            }
+            using (var context = new BreakAwayContext())
+            {
+                var destination = context.Destinations.Include("Lodgings").Single(d => d.DestinationId == destinationId);
+                var aLodging = destination.Lodgings.FirstOrDefault();
+                context.Destinations.Remove(destination);
+                Console.WriteLine("State of one Lodging: {0}", context.Entry(aLodging).State.ToString());
+                context.SaveChanges();
+            }
+        }
+
+
+        static void DeleteDestinationInMemoryAndDbCascade2()
+        {
+            //NOTE:
+            //随同Destination一起删除以前存入的Loading数据。我们删除与Lodging提到的所有相关代码。
+            //由于内存中无Lodging，就不会有客户端的级联删除，而数据库却清除了任何孤立的Lodgings数据，
+            //这是因为在数据库中定义了级联删除。
+
+            Guid destinationId;
+            using (var context = new BreakAwayContext())
+            {
+                var destination = new AnnotationModel.Destination
+                {
+                    Name = "Sample Destination",
+                    Address = new AnnotationModel.Address
+                    {
+                        City = "City"
+                    },
+                    Lodgings = new List<AnnotationModel.Lodging>
+                    {
+                        new AnnotationModel.Lodging
+                        {
+                            Name = "Lodging One"
+                        },
+                        new AnnotationModel.Lodging
+                        {
+                            Name = "Lodging Two"
+                        }
+                    },
+                    Info = new AnnotationModel.PersonalInfo
+                    {
+                        DietryRestrictions = "DietryRestrictions",
+                        Width = new AnnotationModel.Measurement
+                        {
+                            Reading = 2.1M,
+                            Units = "Units"
+                        },
+                        Height = new AnnotationModel.Measurement
+                        {
+                            Reading = 3.1M,
+                            Units = "Units2"
+                        }
+                    }
+                };
+                context.Destinations.Add(destination);
+                context.SaveChanges();
+                destinationId = destination.DestinationId;
+            }
+            using (var context = new BreakAwayContext())
+            {
+                var destination = context.Destinations.Single(d => d.DestinationId == destinationId);
+                context.Destinations.Remove(destination);
+                context.SaveChanges();
+            }
+            using (var context = new BreakAwayContext())
+            {
+                var lodgings = context.Lodgings.Where(l => l.DestinationId == destinationId).ToList();
+                Console.WriteLine("Lodgings: {0}", lodgings.Count);
             }
         }
         #endregion

@@ -10,6 +10,7 @@ namespace AnnotationModel
 {
     public class Lodging
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid LodgingId
         {
             get;
@@ -32,6 +33,11 @@ namespace AnnotationModel
         }
 
         public decimal MilesFromNearestAirport
+        {
+            get;
+            set;
+        }
+        public Guid LocationId
         {
             get;
             set;

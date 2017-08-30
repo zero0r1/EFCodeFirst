@@ -41,8 +41,18 @@ namespace DataAccess
             modelBuilder.Configurations.Add(new PersonConfiguration());
             modelBuilder.Configurations.Add(new InternetSpecialConfiguration());
 
+
             //注册Address类为复杂类型
-            modelBuilder.ComplexType<Address>();
+            //modelBuilder.ComplexType<Address>();
+
+            //对复杂类型的列名施加影响
+            //设置Address字段名称,使用FluentApi使其受到影响
+            //在ComplexType下设置ColumnName必须使用一下表达式,不能单独设置,否则出错.
+            modelBuilder.ComplexType<Address>().Property(a => a.StreetAddress).HasColumnName("StreetAddress");
+            modelBuilder.ComplexType<Address>().Property(a => a.City).HasColumnName("City");
+            modelBuilder.ComplexType<Address>().Property(a => a.State).HasColumnName("State");
+            modelBuilder.ComplexType<Address>().Property(a => a.ZipCode).HasColumnName("ZipCode");
+
 
             //注册PersonalInfo类为复杂类型
             modelBuilder.ComplexType<PersonalInfo>();
@@ -52,8 +62,9 @@ namespace DataAccess
         {
             public DestinationConfiguration()
             {
+                //使用Fluent API修改默认列名 HasColumnName
                 //Fluent Api 首先需要定义主键，否则会出现缺少主键的错误,再定义主键类型
-                HasKey(d => d.DestinationId).Property(d => d.DestinationId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                HasKey(d => d.DestinationId).Property(d => d.DestinationId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("LocationID");
 
 
                 Property(d => d.Name).IsRequired();
