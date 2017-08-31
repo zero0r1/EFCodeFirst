@@ -40,6 +40,7 @@ namespace DataAccess
             modelBuilder.Configurations.Add(new LodgingConfiguration());
             modelBuilder.Configurations.Add(new PersonConfiguration());
             modelBuilder.Configurations.Add(new InternetSpecialConfiguration());
+            modelBuilder.Configurations.Add(new ReservationConfiguration());
 
 
             //注册Address类为复杂类型
@@ -56,6 +57,11 @@ namespace DataAccess
 
             //注册PersonalInfo类为复杂类型
             modelBuilder.ComplexType<PersonalInfo>();
+
+
+            //使用Fluent API切分表
+            //将Person切分为People,所有的导航属性将不创建字段,将重新简历为People的表
+            //modelBuilder.Entity<Person>().ToTable("People");
         }
 
         public class DestinationConfiguration : EntityTypeConfiguration<Destination>
@@ -64,12 +70,37 @@ namespace DataAccess
             {
                 //使用Fluent API修改默认列名 HasColumnName
                 //Fluent Api 首先需要定义主键，否则会出现缺少主键的错误,再定义主键类型
-                HasKey(d => d.DestinationId).Property(d => d.DestinationId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("LocationID");
+                HasKey(d => d.DestinationId);
+                Property(d => d.DestinationId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-
-                Property(d => d.Name).IsRequired();
+                Property(d => d.Name).HasColumnName("LocationID");
+                Property(d => d.Name).IsRequired().HasColumnName("LocationName");
                 Property(d => d.Description).HasMaxLength(500);
                 Property(d => d.Photo).HasColumnType("image");
+
+                //使用Fluent API切分表
+                //映射一个单独的实体到多个表
+                // ToTable("Locations", "baga"); 
+                //<code>
+                //Map(m =>
+                //{
+                //    m.Properties(d => new
+                //    {
+                //        d.Name,
+                //        d.Country,
+                //        d.Description
+                //    });
+                //    m.ToTable("Locations");
+                //});
+                //Map(m =>
+                //{
+                //    m.Properties(d => new
+                //    {
+                //        d.Photo
+                //    });
+                //    m.ToTable("LocationPhotos");
+                //});
+                //<code>
 
                 //在Data Annotation无法做到位数精确
                 //对Decimal固定有效位数和小数位数的影响,Convention默认规则: Decimals are 18, 2
@@ -145,6 +176,12 @@ namespace DataAccess
                 //再添加了HasForeignKey方法来为关系指定外键
                 HasRequired(s => s.Accommodation).WithMany(l => l.InternetSpecials).HasForeignKey(s => s.AccommodationId);
             }
+        }
+
+        //通过 EntityTypeConfiguration 的配置情况下即使不添加DbSet,数据库一样可以建立数据表
+        public class ReservationConfiguration : EntityTypeConfiguration<Reservation>
+        {
+
         }
     }
 }

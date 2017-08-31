@@ -34,8 +34,8 @@ namespace BreakAwayConsole
 #if FluentApi
 
             FluentApiInsertDestination();
-            FluentApiUpdatePersonDestination();
-            FluentApiDeleteDestinationInMemoryAndDbCascade();
+            //FluentApiUpdatePersonDestination();
+            //FluentApiDeleteDestinationInMemoryAndDbCascade();
 #endif
         }
 
@@ -90,6 +90,16 @@ namespace BreakAwayConsole
             using (var context = new FluentApiBreakAwayContext())
             {
                 context.Destinations.Add(destination);
+                context.SaveChanges();
+            }
+
+            using (var context = new FluentApiBreakAwayContext())
+            {
+                var destinationsArray = context.Destinations.ToList();
+                var destinationFirst = destinationsArray[0];
+                destinationFirst.Description += "Trust us, you'll love it!";
+                context.SaveChanges();
+                //context.Destinations.Remove(destinationFirst);
                 context.SaveChanges();
             }
         }
@@ -194,9 +204,9 @@ namespace BreakAwayConsole
             //多对多关系
             var trips = new AnnotationModel.Trip
             {
-                Activities = new List<Activity>()
+                Activities = new List<AnnotationModel.Activity>()
                  {
-                     new Activity
+                     new AnnotationModel.Activity
                      {
                           Name="Name",
                      }
