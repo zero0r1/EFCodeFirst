@@ -59,6 +59,22 @@ Fluent						HasRequired(l = >l.Destination).WithMany(d = >d.Lodgings).WillCascad
 
 
 避免类型包含进模型中:
+NOTE: 一个典型的不想储存在数据库中的属性例子是在类中使用其他属性计算出来的属性。
+例如，你可能想很容易地访问一个人的full name，这是根据First Name和Last Name合并计算得到的。
+类可以计算它而没有必要将其存进数据库。
+默认规则里，所有同时拥有get和set访问器的公开属性都会包含进模型中。
+如果一个属性有get或set访问器，也不会被包含进模型中。
+如果你在Person类中有FullName属性，可以只设置get访问器而不设置set访问器来实现排除在映射之外。
+public string FullName {
+    get {
+        return String.Format("{0} {1}", FirstName.Trim(), LastName);
+    }
+}
+
+但是，你可以还会有一些同时拥有get和set访问器的属性不想持久化到数据库。
+这个时候就可以使用: 
+忽略属性
+
 使用 Annotations来-			[NotMapped]public class MyInMemoryOnlyClass
 -忽略类型					
 使用 Fluent配置来-			modelBuilder.Ignore<MyInMemoryOnlyClass>();
@@ -70,3 +86,7 @@ Fluent						HasRequired(l = >l.Destination).WithMany(d = >d.Lodgings).WillCascad
 3.非公开的属性必须使用Fluent API配置才能被Code First所映射;
 对于非公开属性，这意味只有执行配置的位置才能访问该属性.
 
+//控制由Code First生产的外键
+//使用 FluentApi MapKey Function 定义外键
+//变更外键列名只能通过Fluent API.你可以使用Map方法来控制的映射,也可使用Map方法来控制关系的映射.
+HasRequired(l => l.Destination).WithMany(d => d.Lodgings).Map(c => c.MapKey("DestinationId"));

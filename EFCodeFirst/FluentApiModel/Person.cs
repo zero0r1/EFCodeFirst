@@ -16,6 +16,15 @@ namespace FluentApiModel
 
     //当我们配置类为为嵌套类时，可以使用下列代码：
     //modelBuilder.Configurations.Add(new Person.PersonConfig());
+
+    //一个常见的场景是为了避免开发者在代码中修改某个特定的属性（如PersonId)，使用set访问器来将属性设置为private或internal.
+    //这种场景的实现归功于上述所列的第二个规则：Set访问器可以用更严格的访问规则界定，但get访问器必须保持public才能被自动映射；
+    //EF框架必须使用反射才能访问非公开的set访问器，但当运行于中等信任的模式时这并不提供支持。除了中等信任的情况以外，
+    //这意味着当真实对象作为查询或插入的结果时，上下文将能够填充受限的属性。
+    //上下文也能够以查询或插入的数据为属性设置值--即使上下文和域类处于单独的程序集或名称空间里。
+    //这即可以工作在有键值的情况，也可以工作在没有键值的情况下。
+
+    //定义类
     //public class Person
     //{
     //    public int PersonId
@@ -23,11 +32,13 @@ namespace FluentApiModel
     //        get;
     //        set;
     //    }
+    //私有字段
     //    private string Name
     //    {
     //        get;
     //        set;
     //    }
+    //通过配置的方式添加到数据库
     //    public class PersonConfig : EntityTypeConfiguration<Person>
     //    {
     //        public PersonConfig()

@@ -34,8 +34,10 @@ namespace BreakAwayConsole
 #if FluentApi
 
             FluentApiInsertDestination();
-            //FluentApiUpdatePersonDestination();
-            //FluentApiDeleteDestinationInMemoryAndDbCascade();
+            FluentApiUpdatePersonDestination();
+            FluentApiDeleteDestinationInMemoryAndDbCascade();
+            FluentApiInsertLodging();
+            FluentApiInsertResort();
 #endif
         }
 
@@ -73,14 +75,14 @@ namespace BreakAwayConsole
                     {
                         Name = "lodging Name",
                         Owner = "lodging Owner",
-                        IsResort = true,
+                        //IsResort = true,
                         MilesFromNearestAirport = 1.1M
                     },
                      new FluentApiModel.Lodging
                      {
                          Name = "lodging Name2",
                         Owner = "lodging Owner2",
-                        IsResort = true,
+                        //IsResort = true,
                         MilesFromNearestAirport = 2.2M
                      }
                 }
@@ -196,6 +198,90 @@ namespace BreakAwayConsole
         //        context.SaveChanges();
         //    }
         //}
+
+        /// <summary>
+        /// 映射到继承层次结构
+        /// 由EF框架生成的INSERT语句会将字符串 "Lodging" 放进新加入行的Discriminator列中
+        /// </summary>
+        static void FluentApiInsertLodging()
+        {
+            var lodging = new FluentApiModel.Lodging
+            {
+                Name = "Rainy Day Motel",
+                Destination = new FluentApiModel.Destination
+                {
+                    Name = "Seattle, Washington",
+                    Country = "USA",
+                    Address = new FluentApiModel.Address
+                    {
+                        City = "City",
+                    },
+                    Info = new FluentApiModel.PersonalInfo
+                    {
+                        DietryRestrictions = "DietryRestrictions",
+                        Width = new FluentApiModel.Measurement
+                        {
+                            Reading = 1M,
+                            Units = "Units"
+                        },
+                        Height = new FluentApiModel.Measurement
+                        {
+                            Reading = 2M,
+                            Units = "Units2"
+                        }
+                    }
+                }
+            };
+            using (var context = new FluentApiBreakAwayContext())
+            {
+                context.Lodgings.Add(lodging);
+                context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// 由EF框架生成的INSERT语句会将字符串 "Resort" 放进新加入行的Discriminator列中
+        /// </summary>
+        static void FluentApiInsertResort()
+        {
+            //创建Resort类型的实例
+            var resort = new FluentApiModel.Resort
+            {
+                Name = "Top Notch Resort and Spa",
+                MilesFromNearestAirport = 30,
+                Activities = "Spa, Hiking, Skiing, Ballooning",
+                Destination = new FluentApiModel.Destination
+                {
+                    Name = "Stowe, Vermont",
+                    Country = "USA",
+                    Address = new FluentApiModel.Address
+                    {
+                        City = "City",
+                    },
+                    Info = new FluentApiModel.PersonalInfo
+                    {
+                        DietryRestrictions = "DietryRestrictions",
+                        Width = new FluentApiModel.Measurement
+                        {
+                            Reading = 1M,
+                            Units = "Units"
+                        },
+                        Height = new FluentApiModel.Measurement
+                        {
+                            Reading = 2M,
+                            Units = "Units2"
+                        }
+                    }
+                }
+            };
+            using (var context = new FluentApiBreakAwayContext())
+            {
+                //并且要保存到 Lodgings 它的基类中
+                //EF框架将会在Discriminator列中插入字符串 "Resort".
+                context.Lodgings.Add(resort);
+                context.SaveChanges();
+            }
+        }
         #endregion
 
         #region DataAnnotation

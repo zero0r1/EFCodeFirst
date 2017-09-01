@@ -41,7 +41,7 @@ namespace DataAccess
             modelBuilder.Configurations.Add(new PersonConfiguration());
             modelBuilder.Configurations.Add(new InternetSpecialConfiguration());
             modelBuilder.Configurations.Add(new ReservationConfiguration());
-
+            modelBuilder.Configurations.Add(new ActivityConfiguration());
 
             //注册Address类为复杂类型
             //modelBuilder.ComplexType<Address>();
@@ -60,8 +60,8 @@ namespace DataAccess
 
 
             //使用Fluent API切分表
-            //将Person切分为People,所有的导航属性将不创建字段,将重新简历为People的表
-            //modelBuilder.Entity<Person>().ToTable("People");
+            //将Person切分为Person,所有的导航属性将不创建字段,将重新建立为 People 的表
+            modelBuilder.Entity<Person>().ToTable("Person");
         }
 
         public class DestinationConfiguration : EntityTypeConfiguration<Destination>
@@ -127,6 +127,8 @@ namespace DataAccess
                 //使Code First知晓你想建立一个必须的（Required）一对多关系
                 HasMany(d => d.Lodgings).WithRequired(l => l.Destination);
                 #endregion
+
+
             }
         }
 
@@ -144,6 +146,73 @@ namespace DataAccess
                 //第二个配置是针对SecondaryContact和SecondaryContactFor两者关系建立的
                 HasOptional(l => l.PrimaryContact).WithMany(p => p.PrimaryContactFor);
                 HasOptional(l => l.SecondaryContact).WithMany(p => p.SecondaryContactFor);
+
+                //映射到继承层次结构
+                //<code>
+                //PART 1
+                //Map可以将实体分割成为多个表也可以将默认的 Discriminator 列改变成为 LodgingType
+                //将 Lodgings -> 更变为 Standard
+                //将 Resort   -> 更变为 Resort
+                Map(m =>
+                {
+                    //控制使用实体切分生成的外键
+                    //拆分表必须将所有字段切分,不然会报错
+                    //运行一下实例必须解除注释
+                    //<code>
+                    //m.Properties(d => new
+                    //{
+                    //    d.Name,
+                    //    d.LodgingId,
+                    //    d.MilesFromNearestAirport,
+                    //});
+                    //</code>
+
+                    m.ToTable("Lodgings");
+                    m.Requires("LodgingType").HasValue("Standard");
+
+                }).Map<Resort>(m =>
+                {
+                    m.Requires("LodgingType").HasValue("Resort");
+                });
+
+                //控制使用实体切分生成的外键
+                //拆分表必须将所有字段切分,不然会报错
+                //运行一下实例必须解除注释
+                //<code>
+                //Map(m =>
+                // {
+                //     m.Properties(d => new
+                //     {
+                //         d.Owner,
+                //     });
+                //     m.ToTable("LodgingInfo");
+                // });
+                //</code>
+
+                //PART 2
+                //可以将默认列 Discriminator 转换成为 bool 类型 名称变更为 IsResort 类型为 bit NOT NULL
+                //Map(m =>
+                //{
+                //    m.ToTable("Lodging");
+                //    m.Requires("IsResort").HasValue(false);
+                //})
+                //.Map<Resort>(m =>
+                //{
+                //    m.Requires("IsResort").HasValue(true);
+                //});
+                //</code>
+
+
+                //控制由Code First生产的外键
+                //通过 FluentApi 创建外键
+                //变更外键列名只能通过 Fluent API.你可以使用Map方法来控制的映射,也可使用Map方法来控制关系的映射.
+                HasRequired(l => l.Destination).WithMany(d => d.Lodgings).Map(c => c.MapKey("DestinationId"));
+
+                //控制使用实体切分生成的外键
+                //运行一下实例必须解除注释
+                //<code>
+                //HasRequired(l => l.Destination).WithMany(d => d.Lodgings).Map(c => c.MapKey("DestinationId").ToTable("LodgingInfo"));
+                //</code>
             }
         }
 
@@ -151,7 +220,7 @@ namespace DataAccess
         {
             public PersonConfiguration()
             {
-                //SocialSecurityNumber 属性设置为System.ComponentModel.DataAnnotations.DatabaseGeneratedOption.None，
+                //SocialSecurityNumber 属性设置为 System.ComponentModel.DataAnnotations.DatabaseGeneratedOption.None，
                 //以指示该值不由数据库生成
                 Property(p => p.SocialSecurityNumber).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
@@ -180,6 +249,11 @@ namespace DataAccess
 
         //通过 EntityTypeConfiguration 的配置情况下即使不添加DbSet,数据库一样可以建立数据表
         public class ReservationConfiguration : EntityTypeConfiguration<Reservation>
+        {
+
+        }
+
+        public class ActivityConfiguration : EntityTypeConfiguration<Trip>
         {
 
         }

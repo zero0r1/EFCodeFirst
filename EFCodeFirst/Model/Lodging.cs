@@ -37,11 +37,14 @@ namespace AnnotationModel
             get;
             set;
         }
-        public Guid LocationId
-        {
-            get;
-            set;
-        }
+
+        //映射到继承层次结构演示:
+        //取消IsResort
+        //public bool IsResort
+        //{
+        //    get;
+        //    set;
+        //}
 
         // -与Destination（主键）具有依赖关系
         // 此处Destination属性代表单个Destination实例
@@ -101,5 +104,21 @@ namespace AnnotationModel
         }
 
         #endregion
+    }
+
+    //映射到继承层次结构演示: 
+    //创建一个单独的Resort类继承自Lodging类
+    public class Resort : Lodging
+    {
+        public string Entertainment
+        {
+            get;
+            set;
+        }
+        public string Activities
+        {
+            get;
+            set;
+        }
     }
 }

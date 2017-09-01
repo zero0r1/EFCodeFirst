@@ -23,11 +23,15 @@ namespace FluentApiModel
             get;
             set;
         }
-        public bool IsResort
-        {
-            get;
-            set;
-        }
+
+        //映射到继承层次结构演示:
+        //取消IsResort
+        //public bool IsResort
+        //{
+        //    get;
+        //    set;
+        //}
+
         public decimal MilesFromNearestAirport
         {
             get;
@@ -47,11 +51,13 @@ namespace FluentApiModel
         //外键
         //设置外键的同时,他的类型必须与 (Guid)Destination.DestinationId 类型一致否则无法自动创建外键.
         //Code First默认约定就是 根据类中外键属性的可空性，来确定是否关系是Required还是Optional的。
-        public Guid DestinationId
-        {
-            get;
-            set;
-        }
+        //外键注释掉,可以通过 FluentApi 方式添加 外键 
+        //语法: HasRequired(l => l.Destination).WithMany(d => d.Lodgings).Map(c => c.MapKey("DestinationId"));
+        //public Guid DestinationId
+        //{
+        //    get;
+        //    set;
+        //}
 
         public List<InternetSpecial> InternetSpecials
         {
@@ -84,5 +90,24 @@ namespace FluentApiModel
         }
 
         #endregion
+    }
+
+    //映射到继承层次结构演示: 
+    //创建一个单独的Resort类继承自Lodging类
+    public class Resort : Lodging
+    {
+        //Resort信息储存在Lodgings表中，Code First创建了一个列命名为Discriminator。
+        //注意这是一个非可空列，类型为nvarchar(128)。默认情况下，
+        //Code First会使用每个类型在继承层次中的类名作为discrimnator列的存储值。
+        public string Entertainment
+        {
+            get;
+            set;
+        }
+        public string Activities
+        {
+            get;
+            set;
+        }
     }
 }
