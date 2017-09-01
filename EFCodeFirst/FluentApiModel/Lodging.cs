@@ -89,6 +89,17 @@ namespace FluentApiModel
             set;
         }
 
+        public Nullable<Guid> PrimaryContactId
+        {
+            get;
+            set;
+        }
+        public Nullable<Guid> SecondaryContactId
+        {
+            get;
+            set;
+        }
+
         #endregion
     }
 

@@ -144,8 +144,8 @@ namespace DataAccess
                 //使用Has/With语句来指定关系的两端
                 //第一个配置的一端为Lodging.PrimaryContact，另一端为Person.PrimaryContactFor.
                 //第二个配置是针对SecondaryContact和SecondaryContactFor两者关系建立的
-                HasOptional(l => l.PrimaryContact).WithMany(p => p.PrimaryContactFor);
-                HasOptional(l => l.SecondaryContact).WithMany(p => p.SecondaryContactFor);
+                HasOptional(l => l.PrimaryContact).WithMany(p => p.PrimaryContactFor).HasForeignKey(p => p.PrimaryContactId);
+                HasOptional(l => l.SecondaryContact).WithMany(p => p.SecondaryContactFor).HasForeignKey(p => p.SecondaryContactId);
 
                 //映射到继承层次结构
                 //<code>
