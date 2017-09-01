@@ -9,3 +9,13 @@ D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\Annota
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.pdb
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.csprojResolveAssemblyReference.cache
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.csproj.CoreCompileInputs.cache
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\AnnotationModel.dll.config
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\AnnotationModel.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\AnnotationModel.pdb
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.xml
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.csprojResolveAssemblyReference.cache
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.pdb

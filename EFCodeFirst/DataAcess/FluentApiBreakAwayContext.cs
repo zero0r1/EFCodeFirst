@@ -250,12 +250,31 @@ namespace DataAccess
         //通过 EntityTypeConfiguration 的配置情况下即使不添加DbSet,数据库一样可以建立数据表
         public class ReservationConfiguration : EntityTypeConfiguration<Reservation>
         {
+            public ReservationConfiguration()
+            {
 
+            }
         }
 
         public class ActivityConfiguration : EntityTypeConfiguration<Trip>
         {
+            public ActivityConfiguration()
+            {
+                //控制多对多关系中的内联表
+                //前面根据默认的方式已经在Acitvity和Trip之间引入了多对多关系，最终在数据库中生成 ActivityTrips 内联表
+                //但是通过Map方法配置这个表名, 可以使这个表名更加具有意义
+                //HasMany(t => t.Activities).WithMany(a => a.Trips).Map(c => c.ToTable("TripActivities"));
 
+
+                HasMany(t => t.Activities).WithMany(a => a.Trips).Map(c =>
+                {
+                    c.ToTable("TripActivities");
+                    //hasMany is Left Table
+                    c.MapLeftKey("TripIdentifier");
+                    //withMany is Right Table
+                    c.MapRightKey("ActivityId");
+                });
+            }
         }
     }
 }

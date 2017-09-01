@@ -40,3 +40,17 @@ D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\An
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.pdb
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.dll.config
 D:\support\xiang\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\DataAccess.dll.config
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\DataAccess.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\DataAccess.pdb
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\EntityFramework.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\FluentApiModel.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\FluentApiModel.pdb
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.pdb
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\EntityFramework.xml
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.dll
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.pdb
