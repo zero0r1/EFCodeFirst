@@ -18,3 +18,4 @@ C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\bin\Debug
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.csprojResolveAssemblyReference.cache
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.dll
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.pdb
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\FluentApiModel\obj\Debug\FluentApiModel.csproj.CoreCompileInputs.cache
