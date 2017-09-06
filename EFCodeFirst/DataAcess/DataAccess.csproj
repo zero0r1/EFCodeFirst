@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BreakAwayContext.cs" />
+    <Compile Include="DropCreateBreakAwayWithSeedData.cs" />
     <Compile Include="FluentApiBreakAwayContext.cs" />
+    <Compile Include="PromptForDropCreateDatabaseWhenModelChages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

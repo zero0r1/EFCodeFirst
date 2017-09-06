@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace AnnotationModel
 {
+
+    //映射到可更新的视图
+    //使用Fluent API的ToTable方法来映射到视图
+    //[Table("my_detination_view")]
     public class Destination
     {
         [Column("LocationID"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]

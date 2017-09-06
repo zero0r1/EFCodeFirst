@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -12,6 +13,23 @@ namespace DataAccess
 {
     public class FluentApiBreakAwayContext : DbContext
     {
+
+        //如果使用默认初始化器, 数据库名称将是 [nameSpace]DataAccess.[className]FluentApiBreakAwayContext
+        public FluentApiBreakAwayContext() { }
+
+        /// <summary>
+        /// 可以重定义数据库名称,也可以传递数据库连接字符串
+        /// 如果传递数据库连接字符串格式: name=BreakAwayContext
+        /// </summary>
+        /// <param name="databaseName">数据库名称</param>
+        public FluentApiBreakAwayContext(string databaseName) : base(databaseName) { }
+
+        /// <summary>
+        /// 重用数据库连接,DbContext另一个构造器，允许您提供一个DbConnection的实例
+        /// </summary>
+        /// <param name="connection"></param>
+        public FluentApiBreakAwayContext(DbConnection connection) : base(connection, contextOwnsConnection: false) { }
+
         //定义外部可访问数据
         //<code>
         public DbSet<Destination> Destinations
@@ -19,6 +37,7 @@ namespace DataAccess
             get;
             set;
         }
+
         public DbSet<Lodging> Lodgings
         {
             get;
@@ -30,6 +49,14 @@ namespace DataAccess
             get;
             set;
         }
+
+        public DbSet<ViewDestination> ViewDestinations
+        {
+            get;
+            set;
+        }
+
+
         //</code>
 
 
@@ -42,6 +69,9 @@ namespace DataAccess
             modelBuilder.Configurations.Add(new InternetSpecialConfiguration());
             modelBuilder.Configurations.Add(new ReservationConfiguration());
             modelBuilder.Configurations.Add(new ActivityConfiguration());
+            modelBuilder.Configurations.Add(new ViewDestinationConfiguration());
+
+
 
             //注册Address类为复杂类型
             //modelBuilder.ComplexType<Address>();
@@ -62,6 +92,11 @@ namespace DataAccess
             //使用Fluent API切分表
             //将Person切分为Person,所有的导航属性将不创建字段,将重新建立为 People 的表
             modelBuilder.Entity<Person>().ToTable("Person");
+
+
+            //映射到可更新的视图
+            //使用Fluent API的ToTable方法来映射到视图
+            //modelBuilder.Entity<Destination>().ToTable("TopTenDestinations");
         }
 
         public class DestinationConfiguration : EntityTypeConfiguration<Destination>
@@ -253,6 +288,15 @@ namespace DataAccess
             public ReservationConfiguration()
             {
 
+            }
+        }
+
+        //通过 EntityTypeConfiguration 的配置情况下即使不添加DbSet,数据库一样可以建立数据表
+        public class ViewDestinationConfiguration : EntityTypeConfiguration<ViewDestination>
+        {
+            public ViewDestinationConfiguration()
+            {
+                HasKey(v => v.DestinationId).Property(v => v.DestinationId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             }
         }
 
