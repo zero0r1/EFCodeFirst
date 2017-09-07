@@ -262,6 +262,7 @@ namespace DataAccess
                 /***
                   *
                  *** 
+                场景:
                 调用SaveChanges 时，因为BloggerName 字段上具有ConcurrencyCheck 注释，
                 所以在更新中将使用该属性的初始值。该命令将尝试通过同时依据键值和 BloggerName 的初始值进行筛选来查找正确的行。
                 下面是发送到数据库的 UPDATE 命令的关键部分，
