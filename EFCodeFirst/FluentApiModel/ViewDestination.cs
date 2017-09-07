@@ -19,11 +19,11 @@ namespace FluentApiModel
             get;
             set;
         }
-        //public string Country
-        //{
-        //    get;
-        //    set;
-        //}
+        public string Country
+        {
+            get;
+            set;
+        }
 
         public decimal JustDecimal
         {
@@ -31,17 +31,16 @@ namespace FluentApiModel
             set;
         }
 
+        public string Description
+        {
+            get;
+            set;
+        }
 
-        //public string Description
-        //{
-        //    get;
-        //    set;
-        //}
-
-        //public byte[] Photo
-        //{
-        //    get;
-        //    set;
-        //}
+        public byte[] Photo
+        {
+            get;
+            set;
+        }
     }
 }

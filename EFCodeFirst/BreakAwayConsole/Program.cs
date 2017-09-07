@@ -21,6 +21,25 @@ namespace BreakAwayConsole
 
         static void Main(string[] args)
         {
+
+            /***
+              *
+             ***
+            数据库初始化策略：
+            1.CreateDatabaseIfNotExists：这是默认的策略。如果数据库不存在，那么就创建数据库。但是如果数据库存在了，而且实体发生了变化，就会出现异常。
+            2.DropCreateDatabaseIfModelChanges：此策略表明，如果模型变化了，数据库就会被重新创建，原来的数据库被删除掉了。
+            3.DropCreateDatabaseAlways：此策略表示，每次运行程序都会重新创建数据库，这在开发和调试的时候非常有用。
+            4.自定制数据库策略：可以自己实现IDatabaseInitializer来创建自己的策略。或者从已有的实现了IDatabaseInitializer接口的类派生。
+            */
+
+            /***
+              *
+             ***
+            如果不想使用策略，就可以关闭策略，特别是默认策略
+            Database.SetInitializer<UserManContext>(null);
+            < addkey = "DatabaseInitializerForTypeEFCodeFirstSample.UserManContext, EFCodeFirstSample" value = "Disabled" />
+            */
+
             //当然这一方法,也并不是 100% 能够删除数据库的你需要关闭所有的数据库引用,包括任何 SqlServer Management
             //<code>
 
@@ -45,17 +64,17 @@ namespace BreakAwayConsole
 
 
 #if Annotation
-            UpdatePersonDestination();
-            DeleteDestinationInMemoryAndDbCascade();
-            //DeleteDestinationInMemoryAndDbCascade2();
-            SelectTripWithActivities();
+UpdatePersonDestination();
+DeleteDestinationInMemoryAndDbCascade();
+//DeleteDestinationInMemoryAndDbCascade2();
+SelectTripWithActivities();
 #endif
 
 #if FluentApi
 
 
 #if false
-            FluentApiReuseDbConnection();
+FluentApiReuseDbConnection();
 #endif
 
             FluentApiQueryDestinationView();
@@ -101,21 +120,21 @@ namespace BreakAwayConsole
                     },
                 },
                 Lodgings = new List<FluentApiModel.Lodging>() {
-                     new FluentApiModel.Lodging
-                    {
-                        Name = "lodging Name",
-                        Owner = "lodging Owner",
-                        //IsResort = true,
-                        MilesFromNearestAirport = 1.1M
-                    },
-                     new FluentApiModel.Lodging
-                     {
-                         Name = "lodging Name2",
-                        Owner = "lodging Owner2",
-                        //IsResort = true,
-                        MilesFromNearestAirport = 2.2M
-                     }
-                }
+        new FluentApiModel.Lodging
+       {
+           Name = "lodging Name",
+           Owner = "lodging Owner",
+           //IsResort = true,
+           MilesFromNearestAirport = 1.1M
+       },
+        new FluentApiModel.Lodging
+        {
+            Name = "lodging Name2",
+           Owner = "lodging Owner2",
+           //IsResort = true,
+           MilesFromNearestAirport = 2.2M
+        }
+   }
             };
 
 
@@ -189,16 +208,16 @@ namespace BreakAwayConsole
                         }
                     },
                     Lodgings = new List<FluentApiModel.Lodging>
-                    {
-                        new FluentApiModel.Lodging
-                        {
-                            Name = "Lodging One"
-                        },
-                        new FluentApiModel.Lodging
-                        {
-                            Name = "Lodging Two"
-                        }
-                    }
+       {
+           new FluentApiModel.Lodging
+           {
+               Name = "Lodging One"
+           },
+           new FluentApiModel.Lodging
+           {
+               Name = "Lodging Two"
+           }
+       }
                 };
 
                 context.Destinations.Add(destination);
@@ -359,11 +378,11 @@ namespace BreakAwayConsole
                 //  FROM TopTenDestinations");
 
                 var destinations3 = context.Database.SqlQuery<ViewDestination>(@"
-                SELECT
-                    DestinationId,
-                    JustDecimal,
-                    Name
-                  FROM TopTenDestinations");
+   SELECT
+       DestinationId,
+       JustDecimal,
+       Name
+     FROM TopTenDestinations");
 
                 var reef = from destination in destinations3
                            select destination;
@@ -373,7 +392,6 @@ namespace BreakAwayConsole
                     Console.WriteLine(item.Name + item.JustDecimal.ToString());
                 }
             }
-
         }
         #endregion
 
@@ -384,12 +402,12 @@ namespace BreakAwayConsole
             var trips = new AnnotationModel.Trip
             {
                 Activities = new List<AnnotationModel.Activity>()
-                 {
-                     new AnnotationModel.Activity
-                     {
-                          Name="Name",
-                     }
-                 }
+    {
+        new AnnotationModel.Activity
+        {
+             Name="Name",
+        }
+    }
             };
 
             using (var context = new BreakAwayContext())
@@ -479,16 +497,16 @@ namespace BreakAwayConsole
                         }
                     },
                     Lodgings = new List<AnnotationModel.Lodging>
-                    {
-                        new AnnotationModel.Lodging
-                        {
-                            Name = "Lodging One"
-                        },
-                        new AnnotationModel.Lodging
-                        {
-                            Name = "Lodging Two"
-                        }
-                    }
+       {
+           new AnnotationModel.Lodging
+           {
+               Name = "Lodging One"
+           },
+           new AnnotationModel.Lodging
+           {
+               Name = "Lodging Two"
+           }
+       }
                 };
 
                 context.Destinations.Add(destination);
@@ -524,16 +542,16 @@ namespace BreakAwayConsole
                         City = "City"
                     },
                     Lodgings = new List<AnnotationModel.Lodging>
-                    {
-                        new AnnotationModel.Lodging
-                        {
-                            Name = "Lodging One"
-                        },
-                        new AnnotationModel.Lodging
-                        {
-                            Name = "Lodging Two"
-                        }
-                    },
+       {
+           new AnnotationModel.Lodging
+           {
+               Name = "Lodging One"
+           },
+           new AnnotationModel.Lodging
+           {
+               Name = "Lodging Two"
+           }
+       },
                     Info = new AnnotationModel.PersonalInfo
                     {
                         DietryRestrictions = "DietryRestrictions",
@@ -573,23 +591,23 @@ namespace BreakAwayConsole
         /// </summary>
 
 #if false
-        static void FluentApiReuseDbConnection()
-        {
-            var cstr = @"Server=.\SQLEXPRESS;
-            Database=BreakAwayContext;
-            Trusted_Connection=true";
+static void FluentApiReuseDbConnection()
+{
+var cstr = @"Server=.\SQLEXPRESS;
+Database=BreakAwayContext;
+Trusted_Connection=true";
 
-            using (var connection = new SqlConnection(cstr))
-            {
-                using (var context = new FluentApiBreakAwayContext(connection))
-                {
-                    foreach (var destination in context.Destinations)
-                    {
-                        Console.WriteLine(destination.Name);
-                    }
-                }
-            }
-        } 
+using (var connection = new SqlConnection(cstr))
+{
+   using (var context = new FluentApiBreakAwayContext(connection))
+   {
+       foreach (var destination in context.Destinations)
+       {
+           Console.WriteLine(destination.Name);
+       }
+   }
+}
+} 
 #endif
     }
 }
