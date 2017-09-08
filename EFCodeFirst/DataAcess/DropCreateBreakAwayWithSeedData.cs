@@ -34,8 +34,8 @@ namespace DataAccess
             //创建视图
             string sqlScript = @"CREATE VIEW [dbo].[TopTenDestinations]
 AS
-SELECT     DestinationId, Name, JustDecimal
-FROM         dbo.ViewDestinations
+SELECT  DestinationId, Name, JustDecimal
+FROM    dbo.ViewDestinations
 GO
 ";
             context.Database.ExecuteSqlCommand(sqlScript);

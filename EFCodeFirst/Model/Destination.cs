@@ -14,6 +14,11 @@ namespace AnnotationModel
     //[Table("my_detination_view")]
     public class Destination
     {
+        //一个重要的数据库功能是可以使用计算属性
+        //如果您将 Code First 类映射到包含计算列的表，则您可能不想让实体框架尝试更新这些列
+        //。但是在插入或更新数据后，您的确需要 EF 从数据库中返回这些值。
+        //您可以使用 DatabaseGenerated 注释与 Computed 枚举一起在您的类中标注这些属性。其他枚举为 None 和Identity。
+        //如果并不想让 DestinationId 成为主键,因为它与类名加“Id”(不分大小写)匹配就会成为主键,此时使用 DatabaseGeneratedOption.Nope 就可以不当做主键
         [Column("LocationID"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid DestinationId
         {

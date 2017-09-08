@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace AnnotationModel
 {
+
+    //用 Table 特性指定该表的名称
     [Table("Person")]
     public class Person
     {
@@ -29,6 +31,13 @@ namespace AnnotationModel
         如果在此期间有人更改了该博客的博主姓名，则此更新将失败，并引发 DbUpdateConcurrencyException 并且需要处理该异常。
         */
         //使用IsConcurrencyToken方法配置并发，并应用于属性
+
+        //TimeStamp
+        //使用rowversion 或timestamp 字段来进行并发检查更为常见。
+        //但是比起使用 ConcurrencyCheck 注释，只要属性类型为字节数组，
+        //则不如使用更为具体的 TimeStamp 注释。
+        //Code First 将Timestamp 属性与ConcurrencyCheck 属性同等对待，但它还将确保 Code First 生成的数据库字段是不可为空的。
+        //在一个指定类中，只能有一个 timestamp 属性。
         [ConcurrencyCheck]
         public int SocialSecurityNumber
         {
