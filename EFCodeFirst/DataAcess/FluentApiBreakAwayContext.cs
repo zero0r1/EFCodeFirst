@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -12,6 +13,23 @@ namespace DataAccess
 {
     public class FluentApiBreakAwayContext : DbContext
     {
+
+        //如果使用默认初始化器, 数据库名称将是 [nameSpace]DataAccess.[className]FluentApiBreakAwayContext
+        public FluentApiBreakAwayContext() { }
+
+        /// <summary>
+        /// 可以重定义数据库名称,也可以传递数据库连接字符串
+        /// 如果传递数据库连接字符串格式: name=BreakAwayContext
+        /// </summary>
+        /// <param name="databaseName">数据库名称</param>
+        public FluentApiBreakAwayContext(string databaseName) : base(databaseName) { }
+
+        /// <summary>
+        /// 重用数据库连接,DbContext另一个构造器，允许您提供一个DbConnection的实例
+        /// </summary>
+        /// <param name="connection"></param>
+        public FluentApiBreakAwayContext(DbConnection connection) : base(connection, contextOwnsConnection: false) { }
+
         //定义外部可访问数据
         //<code>
         public DbSet<Destination> Destinations
@@ -19,6 +37,7 @@ namespace DataAccess
             get;
             set;
         }
+
         public DbSet<Lodging> Lodgings
         {
             get;
@@ -30,6 +49,14 @@ namespace DataAccess
             get;
             set;
         }
+
+        public DbSet<ViewDestination> ViewDestinations
+        {
+            get;
+            set;
+        }
+
+
         //</code>
 
 
@@ -42,6 +69,9 @@ namespace DataAccess
             modelBuilder.Configurations.Add(new InternetSpecialConfiguration());
             modelBuilder.Configurations.Add(new ReservationConfiguration());
             modelBuilder.Configurations.Add(new ActivityConfiguration());
+            modelBuilder.Configurations.Add(new ViewDestinationConfiguration());
+
+
 
             //注册Address类为复杂类型
             //modelBuilder.ComplexType<Address>();
@@ -62,6 +92,11 @@ namespace DataAccess
             //使用Fluent API切分表
             //将Person切分为Person,所有的导航属性将不创建字段,将重新建立为 People 的表
             modelBuilder.Entity<Person>().ToTable("Person");
+
+
+            //映射到可更新的视图
+            //使用Fluent API的ToTable方法来映射到视图
+            //modelBuilder.Entity<Destination>().ToTable("TopTenDestinations");
         }
 
         public class DestinationConfiguration : EntityTypeConfiguration<Destination>
@@ -224,6 +259,17 @@ namespace DataAccess
                 //以指示该值不由数据库生成
                 Property(p => p.SocialSecurityNumber).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
+                /***
+                  *
+                 *** 
+                场景:
+                调用SaveChanges 时，因为BloggerName 字段上具有ConcurrencyCheck 注释，
+                所以在更新中将使用该属性的初始值。该命令将尝试通过同时依据键值和 BloggerName 的初始值进行筛选来查找正确的行。
+                下面是发送到数据库的 UPDATE 命令的关键部分，
+                在其中您可以看到该命令将更新 PrimaryTrackingKey 为 1 且BloggerName 为“Julie”（这是从数据库中检索到该博客时的初始值）的行。
+                where (([PrimaryTrackingKey]= @4) and([BloggerName] = @5)) @4=1,@5=N'Julie'
+                如果在此期间有人更改了该博客的博主姓名，则此更新将失败，并引发 DbUpdateConcurrencyException 并且需要处理该异常。
+                */
                 //使用IsConcurrencyToken方法配置并发，并应用于属性
                 Property(p => p.SocialSecurityNumber).IsConcurrencyToken();
 
@@ -253,6 +299,18 @@ namespace DataAccess
             public ReservationConfiguration()
             {
 
+            }
+        }
+
+        //通过 EntityTypeConfiguration 的配置情况下即使不添加DbSet,数据库一样可以建立数据表
+        public class ViewDestinationConfiguration : EntityTypeConfiguration<ViewDestination>
+        {
+            public ViewDestinationConfiguration()
+            {
+                HasKey(v => v.DestinationId).Property(v => v.DestinationId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                Ignore(v => v.Country);
+                Ignore(v => v.Description);
+                Ignore(v => v.Photo);
             }
         }
 

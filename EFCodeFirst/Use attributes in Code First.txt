@@ -90,3 +90,68 @@ public string FullName {
 //使用 FluentApi MapKey Function 定义外键
 //变更外键列名只能通过Fluent API.你可以使用Map方法来控制的映射,也可使用Map方法来控制关系的映射.
 HasRequired(l => l.Destination).WithMany(d => d.Lodgings).Map(c => c.MapKey("DestinationId"));
+
+
+//<code>
+关系特性：InverseProperty和ForeignKey
+生成数据库时，CodeFirst 会在 Post 类中看到 BlogId 属性并识别出该属性，按照约定，它与类名加“Id”匹配，并作为 Blog 类的外键。
+但是在此Blog 类中没有 BlogId 属性。
+解决方法是，在 Post 中创建一个导航属性，并使用 Foreign DataAnnotation 来帮助 CodeFirst 了解如何在两个类之间创建关系（那就是使用 Post.BlogId 属性）以及如何在数据库中指定约束。
+
+Example: 
+public class  Post
+{
+  public int Id { get; set; }
+  public string Title { get; set; }
+  public DateTime DateCreated { get;set; }
+  public string Content { get;set; }
+  public int BlogId { get; set; }
+  [ForeignKey("BlogId")]
+  public Blog Blog { get; set; }
+}
+
+数据库中的约束显示InternalBlogs.PrimaryTrackingKey 与Posts.BlogId 之间的关系
+类之间存在多个关系时，将使用 InverseProperty
+在 Post 类中，您可能需要跟踪是谁撰写了博客文章以及谁编辑了它。下面是 Post 类的两个新的导航属性。
+
+Example: 
+public Person CreatedBy { get;set; }
+public Person UpdatedBy { get;set; }
+
+您还需要在这些属性引用的 Person 类中添加内容。
+Person类具有返回到 Post 的导航属性，一个属性指向该用户撰写的所有文章，一个属性指向该用户更新的所有文章。
+
+Example: 
+public class  Person
+{
+  public int Id { get; set; }
+  public string Name { get; set; }
+  public List<Post>PostsWritten { get; set;}
+  public List<Post>PostsUpdated { get; set;}
+}
+
+Code First 不能自行使这两个类中的属性匹配。
+Posts 的数据库表应该有一个表示 CreatedBy 人员的外键，
+有一个表示 UpdatedBy 人员的外键，
+但是 Code First 将创建四个外键属性：Person_Id、Person_Id1、CreatedBy_Id 和UpdatedBy_Id。(针对每个导航属性创建一个外键)
+要解决这些问题，您可以使用 InverseProperty 注释来指定这些属性的匹配。
+
+Example: 
+[InverseProperty("CreatedBy")]
+publicList<Post>PostsWritten { get; set;} 
+
+[InverseProperty("UpdatedBy")]
+publicList<Post>PostsUpdated { get; set;}
+
+因为Person 中的PostsWritten 属性知道这指的是Post 类型，
+所以它将与 Post.CreatedBy 建立关系。
+同样，PostsUpdated 也将与 Post.UpdatedBy 建立关系。Code First 不会创建额外的外键。
+//</code>
+
+
+Code First 数据特性设置: 
+DataAnnotations 不仅可用于在 Code First 类中描述客户端和服务器端验证，
+还让您能够加强甚至更正 Code First 将基于其约定对您的类所作的假设。
+使用 DataAnnotations，您不仅能够推动数据库架构生成，还能将 Code First 类映射到预先存在的数据库。
+虽然它们都非常灵活，但请记住，DataAnnotations 只提供您经常需要对 Code First 类进行的配置更改。
+要为一些边缘情况配置类，则应该采用另一种替代配置机制，那就是 Code First 的Fluent API。
