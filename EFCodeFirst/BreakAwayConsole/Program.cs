@@ -542,16 +542,16 @@ FluentApiReuseDbConnection();
                         City = "City"
                     },
                     Lodgings = new List<AnnotationModel.Lodging>
-       {
-           new AnnotationModel.Lodging
-           {
-               Name = "Lodging One"
-           },
-           new AnnotationModel.Lodging
-           {
-               Name = "Lodging Two"
-           }
-       },
+                   {
+                       new AnnotationModel.Lodging
+                       {
+                           Name = "Lodging One"
+                       },
+                       new AnnotationModel.Lodging
+                       {
+                           Name = "Lodging Two"
+                       }
+                   },
                     Info = new AnnotationModel.PersonalInfo
                     {
                         DietryRestrictions = "DietryRestrictions",
