@@ -54,3 +54,5 @@ C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\Enti
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.dll
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.pdb
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\bin\Debug\AnnotationModel.dll.config
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\DataAcess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache

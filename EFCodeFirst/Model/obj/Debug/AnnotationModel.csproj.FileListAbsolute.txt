@@ -19,3 +19,4 @@ C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\bin\Debug\EntityFr
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.csprojResolveAssemblyReference.cache
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.dll
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.pdb
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\Model\obj\Debug\AnnotationModel.csproj.CoreCompileInputs.cache

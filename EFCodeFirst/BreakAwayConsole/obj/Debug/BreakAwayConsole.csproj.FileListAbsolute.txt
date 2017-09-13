@@ -63,3 +63,6 @@ C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Deb
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.xml
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\obj\Debug\BreakAwayConsole.csprojResolveAssemblyReference.cache
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\DataAccess.dll.config
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\bin\Debug\AnnotationModel.dll.config
+C:\Users\leahd\Documents\GitHub\EFCodeFirst\EFCodeFirst\BreakAwayConsole\obj\Debug\BreakAwayConsole.csproj.CoreCompileInputs.cache
